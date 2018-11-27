@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-11-27 17:00:48 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="pojo.History" table="history">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="user" class="pojo.User" fetch="join">
+            <column name="user" />
+        </many-to-one>
+        <property name="time" type="java.util.Date">
+            <column name="time" />
+        </property>
+        <property name="operation" type="java.lang.String">
+            <column name="operation" />
+        </property>
+    </class>
+</hibernate-mapping>
