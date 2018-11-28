@@ -1,11 +1,23 @@
 package dao.impl;
 
+import java.util.List;
+
+import org.springframework.orm.hibernate3.HibernateTemplate;
+
 import dao.FolderDAO;
+import pojo.Folder;
 
 /**
  * @author: 詹亦凡
  * @date: 2018年11月27日 下午9:11:47
  */
-public class FolderDAOImpl implements FolderDAO {
+public class FolderDAOImpl extends HibernateTemplate implements FolderDAO {
 
+	public List<Folder> list() {
+		return find("from Folder");
+	}
+	
+	public void add(Folder folder) {
+		save(folder);
+	}
 }

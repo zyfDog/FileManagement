@@ -16,4 +16,12 @@ public class FileDAOImpl extends HibernateTemplate implements FileDAO {
 	public List<File> list() {
 		return find("from File");
 	}
+	
+	public void add(File file) {
+		save(file);
+	}
+	
+	public void delete(File file) {
+		super.delete(file);
+	}
 }

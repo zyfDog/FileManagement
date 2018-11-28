@@ -25,4 +25,12 @@ public class FileServiceImpl implements FileService {
 	public List<File> list() {
 		return fileDAO.list();
 	}
+	
+	public void add(File file) {
+		fileDAO.add(file);
+	}
+	
+	public void delete(File file) {
+		fileDAO.delete(file);
+	}
 }

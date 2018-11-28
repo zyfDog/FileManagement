@@ -12,4 +12,7 @@ public interface FileDAO {
 	
 	public List<File> list();
 
+	public void add(File file);
+	
+	public void delete(File file);
 }

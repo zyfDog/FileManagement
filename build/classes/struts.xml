@@ -9,7 +9,7 @@
 
 	<package name="defalut" namespace="/" extends="struts-default">
 		<action name="listFile" class="FileActionBean" method="list">
-			<result name="listJsp">index.jsp</result>
+			<result name="listJsp">file.jsp</result>
 		</action>
 	</package>
 </struts>

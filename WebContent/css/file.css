@@ -1,0 +1,41 @@
+@charset "UTF-8";
+*{padding:0;margin:0;}
+#top{
+	width: 100%;
+	height: 200px;;
+}
+#left{
+	float:left;
+	background-color: yellow;
+	width: 30%;
+	height: 500px;
+}
+#right{
+	float:left;
+	background-color: red;
+	width: 70%;
+	height: 500px;
+}
+#top span{
+	font-size:25px;
+	float:left; 
+}
+#topfunction{
+	position: relative;
+	height:50px;
+	width:70%;
+	padding-left: 150px;	
+	padding-top: 50px;
+}
+#topfunction li{
+	list-style:none;
+	float:left;
+	margin-left:15px;
+	margin-top:10px; 
+}
+#topfunctionright{
+	position: relative;
+	height:50px;
+	width:700px;
+	padding-left: 700px;
+}
