@@ -1,5 +1,9 @@
 package service.impl;
 
+import java.util.List;
+
+import dao.FileDAO;
+import pojo.File;
 import service.FileService;
 
 /**
@@ -8,4 +12,17 @@ import service.FileService;
  */
 public class FileServiceImpl implements FileService {
 
+	FileDAO fileDAO;
+
+	public FileDAO getFileDAO() {
+		return fileDAO;
+	}
+
+	public void setFileDAO(FileDAO fileDAO) {
+		this.fileDAO = fileDAO;
+	}
+
+	public List<File> list() {
+		return fileDAO.list();
+	}
 }

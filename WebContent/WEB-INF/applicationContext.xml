@@ -7,6 +7,18 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
+ 	<bean name="FileActionBean" class="action.FileAction">
+ 		<property name="fileService" ref="fileServiceImpl"></property>
+ 	</bean>
+ 	
+	<bean name="fileServiceImpl" class="service.impl.FileServiceImpl">
+		<property name="fileDAO" ref="fileDAOImpl"></property>
+	</bean>
+ 
+	<bean name="fileDAOImpl" class="dao.impl.FileDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 	<bean name="sessionFactory"
         class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
@@ -36,7 +48,7 @@
     <bean name="dataSource"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql:///student" />
+        <property name="url" value="jdbc:mysql:///file_management" />
         <property name="username" value="root" />
         <property name="password" value="123456" />
     </bean> 
@@ -58,7 +70,7 @@
     </tx:advice> 
     <!--  配置切面    -->
     <aop:config> 
-        <aop:pointcut id="serviceMethod" expression="execution(* com.how2java.service.*.*(..))"/> 
+        <aop:pointcut id="serviceMethod" expression="execution(* service.*.*(..))"/> 
         <aop:advisor pointcut-ref="serviceMethod" advice-ref="txadvice"/> 
     </aop:config>    
 </beans>
