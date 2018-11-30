@@ -1,41 +1,194 @@
-@charset "UTF-8";
-*{padding:0;margin:0;}
-#top{
-	width: 100%;
-	height: 200px;;
+*{
+    padding:0;
+    margin:0;
 }
-#left{
-	float:left;
-	background-color: yellow;
-	width: 30%;
-	height: 500px;
+html{
+    height: 100%;
 }
-#right{
-	float:left;
-	background-color: red;
-	width: 70%;
-	height: 500px;
+body{
+    height: 761px;
+    width: 1536px;
+    margin:0 auto;
 }
-#top span{
-	font-size:25px;
-	float:left; 
+#header{
+    width: 100%;
+    height: 100px;
+    background-color: green;
 }
-#topfunction{
-	position: relative;
-	height:50px;
-	width:70%;
-	padding-left: 150px;	
-	padding-top: 50px;
+#headertop{
+    background: skyblue;
+    height: 50%;
+    width: 100%;
+    font-size: 20px;
+    color: blue;
 }
-#topfunction li{
-	list-style:none;
-	float:left;
-	margin-left:15px;
-	margin-top:10px; 
+#headertop span{
+    float: left;
+    display: block;
+    height: 30px;
+    width: 200px;
+    text-align: center;
+    padding: 10px 0;
 }
-#topfunctionright{
-	position: relative;
-	height:50px;
-	width:700px;
-	padding-left: 700px;
+#headertop ul{
+    float: left;
+    width: 1300px;
+    height: 50px;
+    font-size: 15px;
+}
+#headertop ul li:first-child {
+    margin-left: 650px;
+    border-left: 1px blue solid;
+}
+#headertop li{
+    list-style:none;
+    float: left;
+    margin-left: 14px;
+    margin-top: 30px; 
+    border-right: 1px blue solid;
+}
+#headerpath{
+    height: 50%;
+    width: 100%;
+    background: skyblue;
+    border-top: white 1px solid;
+}
+#headerpath span{
+    color: blue;
+    float: left;
+    display: block;
+    height: 30px;
+    width: 80px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+}
+#headerpath img{
+    float: left;
+    height: 35px; 
+    width: 35px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+#path{
+    height: 35px;
+    width: 1200px;
+    float: left;
+    margin-top: 8px;
+    margin-left: 20px;
+    background: white;
+}
+#main{
+    width: 1536px;
+    height: 661px;
+}
+#mainleft{
+    margin-top: -6px;
+    float: left;
+    height: 661px;
+    width: 300px;
+}
+#mainright{
+    margin-top: -6px;
+    float: left;
+    height: 661px;
+    width: 1234px;
+    margin-left: 2px;
+}
+#mainlefttop{
+    float: left;
+    background:	#C0C0C0;
+    width: 100%;
+    height: 50px;
+}
+#mainlefttop img{
+    float: left;
+    height: 35px; 
+    width: 35px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#mainlefttop span{
+    display: block;
+    float: left;
+    height: 50px;
+    width: 100px;
+    margin-left: 10px;
+    margin-top: 15px;
+    font-size: 15px;
+}
+#mianleftmain{
+    float: left;
+    width: 100%; 
+    height: 611px;
+    background: yellow;
+}
+#mianleftmain ul
+{
+    list-style-type: none;
+}
+#mianleftmain li{
+    background-image: url("img/plus.png");
+    background-repeat: no-repeat;
+    background-position: 0px 13px; 
+    padding-left: 18px; 
+    padding-right: 10px;
+    padding-top: 10px;
+}
+#sidenav{
+    width: 270px;
+    height: 400px;
+    padding-left: 30px;
+    padding-top: 20px;
+}
+#sidenav ul{
+    display:none
+}
+.check{
+    width: 30px;
+}
+.name{
+    width: 450px;
+}
+.size{
+    width: 100px;
+}
+.hits{
+    width: 60px;
+}
+.updatetime{
+    width: 260px;
+}
+.operation{
+    width: 320px;
+}
+#mainright th{
+    height: 30px;
+}
+#mainright table{
+    border-collapse:collapse;
+}
+#tableheader th{
+    border: 1px solid gray;
+}
+#mainright th{
+    border-bottom: 1px solid gray;
+}
+#mainrightbottom{
+    position: absolute;
+    top: 711px;
+    left: 300px;
+    height: 50px;
+    width: 1234px;
+    background-color: antiquewhite;
+}
+#mainrightbottom button{
+    background-color: skyblue;
+    color: blue;
+    font-size: 16px;
+    width:70px;
+    height: 30px;
+    float: left;
+    margin-left: 30px;
+    margin-top: 7px;
 }
