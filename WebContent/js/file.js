@@ -1,6 +1,9 @@
 window.onload=function(){
+  sidenav();
+ }
+ function sidenav(){
   var navWrap=document.getElementById("sidenav");
-  var nav1s=navWrap.getElementsByTagName("span");
+  var nav1s=navWrap.getElementsByClassName("folders");
   var nav2s=navWrap.getElementsByTagName("ul");
   for(var i=0,len=nav1s.length;i<len;i++){
    nav1s[i].onclick=(function(i){
@@ -12,4 +15,10 @@ window.onload=function(){
     }
    })(i)
   }
+ }
+ function newclose(a){
+  a.style.display="none";
+ }
+ function newopen(a){
+  a.style.display="block";
  }

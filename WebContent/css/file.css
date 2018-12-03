@@ -9,6 +9,8 @@ body{
     height: 761px;
     width: 1536px;
     margin:0 auto;
+    color: blue;
+    background-color: skyblue;
 }
 #header{
     width: 100%;
@@ -20,7 +22,6 @@ body{
     height: 50%;
     width: 100%;
     font-size: 20px;
-    color: blue;
 }
 #headertop span{
     float: left;
@@ -37,15 +38,15 @@ body{
     font-size: 15px;
 }
 #headertop ul li:first-child {
-    margin-left: 650px;
-    border-left: 1px blue solid;
+    margin-left: 750px;
+    border-left: 2px blue solid;
 }
 #headertop li{
     list-style:none;
     float: left;
     margin-left: 14px;
     margin-top: 30px; 
-    border-right: 1px blue solid;
+    border-right: 2px blue solid;
 }
 #headerpath{
     height: 50%;
@@ -54,7 +55,6 @@ body{
     border-top: white 1px solid;
 }
 #headerpath span{
-    color: blue;
     float: left;
     display: block;
     height: 30px;
@@ -94,6 +94,10 @@ body{
     height: 661px;
     width: 1234px;
     margin-left: 2px;
+    background-color: white;
+}
+#mainright tr td:first-child {
+    text-align: center;
 }
 #mainlefttop{
     float: left;
@@ -121,14 +125,14 @@ body{
     float: left;
     width: 100%; 
     height: 611px;
-    background: yellow;
+    background: white;
 }
 #mianleftmain ul
 {
     list-style-type: none;
 }
 #mianleftmain li{
-    background-image: url("img/plus.png");
+    background-image: url("../img/plus.png");
     background-repeat: no-repeat;
     background-position: 0px 13px; 
     padding-left: 18px; 
@@ -171,24 +175,152 @@ body{
 #tableheader th{
     border: 1px solid gray;
 }
-#mainright th{
+#mainright td{
     border-bottom: 1px solid gray;
+    height: 30px;
 }
 #mainrightbottom{
     position: absolute;
     top: 711px;
     left: 300px;
     height: 50px;
-    width: 1234px;
-    background-color: antiquewhite;
+    width: 1236px;
+    background-color: skyblue;
 }
 #mainrightbottom button{
     background-color: skyblue;
-    color: blue;
     font-size: 16px;
     width:70px;
     height: 30px;
     float: left;
     margin-left: 30px;
     margin-top: 7px;
+    color: blue;
+}
+.newwindow{
+    display: none;
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    left: 50%;
+    top: 50%;
+    margin-left: -300px;
+    margin-top: -200px;
+    background: skyblue;
+}
+.newtop{
+    width: 100%;
+    height: 50px;
+    background: skyblue;
+    border-bottom: white 1px solid;
+}
+.newtop span{
+    display: block;
+    float: left;
+    height: 20px;
+    width: 40px;
+    margin-top: 25px;
+    margin-left: 10px;
+    border-right: 2px blue solid;
+}
+.newtitle{
+    font-size: 18px;
+    display: block;
+    float: left;
+    padding-top: 10px;
+    padding-left: 50px;
+    height: 40px;
+    width: 100px;
+}
+.newtop span:first-of-type {
+    margin-left: 300px;
+    border-left: 2px blue solid;
+    padding-left: 10px;
+}
+.newmain{
+    width: 500px;
+    height: 300px;
+    margin-top: 25px;
+    margin-left: 50px;
+    background:whitesmoke;
+    border: 1px solid blue;
+}
+.newmain table{
+    width: 450px;
+    height: 250px;
+    padding-top: 20px;
+    padding-left: 25px;
+    font-size: 16px;
+}
+.textarea{
+    width: 300px;
+    height: 80px;
+}
+.newmain input,select{
+    width: 300px;
+}
+#querytextarea{
+    width: 300px;
+    height: 40px;
+}
+.queryselect{
+    width: 100px;
+    height: 22px;
+}
+#querytitle{
+    font-size: 18px;
+    display: block;
+    float: left;
+    padding-top: 10px;
+    padding-left: 50px;
+    height: 40px;
+    width: 120px;
+}
+#querydate{
+    width: 120px;
+}
+#querydate2{
+    width: 120px;
+}
+#historytable th{
+    height: 30px;
+    border: 1px solid gray;
+}
+#historytable{
+    width: 500px;
+    height: 300px;
+    margin-top: 25px;
+    margin-left: 50px;
+    background:whitesmoke;
+    border: 1px solid gray;
+}
+#historytable table{
+    width: 500px;
+    padding-top: 10px;
+    padding-left: 25px;
+    font-size: 16px;
+    border-collapse:collapse;
+    font: 15px;
+}
+#historytable td{
+    height: 30px;
+    border: 1px solid gray;
+}
+#user{
+    width: 100px;
+}
+#time{
+    width: 300px;
+}
+#operation{
+    width: 100px;
+}
+#headertop li{
+    cursor:pointer;
+}
+.newtop span{
+    cursor:pointer;
+}
+#sidenav li{
+    cursor:pointer;
 }
