@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2018-11-28 19:38:26 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2018-12-3 14:56:49 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="pojo.Folder" table="FOLDER">
+    <class name="pojo.Folder" table="folder">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="native" />
+            <generator class="assigned" />
         </id>
         <property name="name" type="java.lang.String">
             <column name="name" />
@@ -14,8 +14,14 @@
         <property name="keyword" type="java.lang.String">
             <column name="keyword" />
         </property>
-        <many-to-one name="superiorFolder" class="pojo.Folder">
+        <many-to-one name="superiorFolder" class="pojo.Folder" fetch="join">
             <column name="superior_folder" />
         </many-to-one>
+        <set name="childrenFolder" table="folder" inverse="false" lazy="false">
+            <key>
+                <column name="superior_folder" />
+            </key>
+            <one-to-many class="pojo.Folder" />
+        </set>
     </class>
 </hibernate-mapping>

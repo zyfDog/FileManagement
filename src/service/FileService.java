@@ -3,6 +3,7 @@ package service;
 import java.util.List;
 
 import pojo.File;
+import pojo.Folder;
 
 /**
  * @author: 詹亦凡
@@ -10,7 +11,7 @@ import pojo.File;
  */
 public interface FileService {
 
-	public List<File> list();
+	public List<File> list(Folder folder);
 	
 	public void add(File file);
 	

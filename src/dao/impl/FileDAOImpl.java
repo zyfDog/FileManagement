@@ -6,6 +6,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import dao.FileDAO;
 import pojo.File;
+import pojo.Folder;
 
 /**
  * @author: 詹亦凡
@@ -13,8 +14,8 @@ import pojo.File;
  */
 public class FileDAOImpl extends HibernateTemplate implements FileDAO {
 
-	public List<File> list() {
-		return find("from File");
+	public List<File> list(Folder folder) {
+		return find("from File where superiorFolder=" + folder.getId());
 	}
 	
 	public void add(File file) {

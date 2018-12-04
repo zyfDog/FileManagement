@@ -14,7 +14,7 @@ import pojo.Folder;
 public class FolderDAOImpl extends HibernateTemplate implements FolderDAO {
 
 	public List<Folder> list() {
-		return find("from Folder");
+		return find("from Folder where superiorFolder is null");
 	}
 	
 	public void add(Folder folder) {

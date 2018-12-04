@@ -7,15 +7,25 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
- 	<bean name="FileActionBean" class="action.FileAction">
+ 	<bean name="indexActionBean" class="action.IndexAction">
+ 		<property name="fileService" ref="fileServiceImpl"></property>
+ 		<property name="folderService" ref="folderServiceImpl"></property>
+ 	</bean>
+ 	<bean name="fileActionBean" class="action.FileAction">
  		<property name="fileService" ref="fileServiceImpl"></property>
  	</bean>
  	
 	<bean name="fileServiceImpl" class="service.impl.FileServiceImpl">
 		<property name="fileDAO" ref="fileDAOImpl"></property>
 	</bean>
+	<bean name="folderServiceImpl" class="service.impl.FolderServiceImpl">
+		<property name="folderDAO" ref="folderDAOImpl"></property>
+	</bean>
  
 	<bean name="fileDAOImpl" class="dao.impl.FileDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="folderDAOImpl" class="dao.impl.FolderDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	

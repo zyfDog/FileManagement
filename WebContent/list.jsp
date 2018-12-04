@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8" />
     <title>Page Title</title>
-    <link rel="stylesheet" type="text/css"  href="css/file.css" />
-    <script type="text/javascript" src="js/file.js"></script>
+    <link rel="stylesheet" type="text/css"  href="css/index.css" />
+    <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
     <div id="header">
@@ -37,25 +37,21 @@
                 <img src="img/book.png"/>
                 <span>知识管理</span>
             </div>
-            <div id="mianleftmain">
+            <div id="mainleftmain">
                 <ul id="sidenav">
-                    <li class="folders"><span>菜单1</span>
-                        <ul>
-                            <li><a href="#">菜单1-0</a></li>
-                            <li><a href="#">菜单1-1</a></li>
-                        </ul>
-                    </li>
-                    <li class="folders"><span>菜单2</span>
-                        <ul>
-                            <li><a href="#">菜单2-0</a></li>
-                            <li><a href="#">菜单2-1</a></li>
-                        </ul>
-                    </li>
-                    <li class="folders"><span>菜单3</span>
-                        <ul>
-                            <li><a href="#">菜单3-0</a></li>
-                        </ul>
-                    </li>
+                	<s:iterator value="folders" var="var" status="status">
+                		<li class="folders"><img src="img/folder.png">&nbsp;<span onclick="listFile(${id})">${name}</span>
+                			<ul <s:if test="folder.id==#var.id">style="display:block"</s:if>
+                			<s:iterator value="#var.childrenFolder" var="var2" status="status">
+                			<s:if test="folder.id==#var2.id">style="display:block"</s:if></s:iterator>>
+								<s:iterator value="#var.childrenFolder" var="var2" status="status">
+									<li><img src="img/folder.png">&nbsp;<span onclick="listFile(${id})">${name}</span>
+										
+									</li>
+								</s:iterator>
+							</ul>
+                		</li>
+                	</s:iterator>
                 </ul>
             </div>
         </div>
@@ -77,18 +73,20 @@
                     <td>2012-05-08 22:13 赵华威</td>
                     <td><a href="www.baidu.com">属性</a>&nbsp;<a>重命名</a></td>
                 </tr>
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>OA办公系统功能介绍.doc</td>
-                    <td>170.0KB</td>
-                    <td>19</td>
-                    <td>2012-05-08 22:13 赵华威</td>
-                    <td><a href="www.baidu.com">属性</a>&nbsp;<a>重命名</a></td>
-                </tr>
+                <s:iterator value="files" status="status">
+				<tr>
+					<td><input name="deleteFiles" type="checkbox" value="${id}"></td>
+					<td>${name}</td>
+					<td>${size}</td>
+					<td>${hits}</td>
+					<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm"/></td>
+					<td>操作</td>
+				</tr>
+			</s:iterator>
             </table>
             <div id="mainrightbottom">
                 <button>转存</button>
-                <button>删除</button>
+                <button onclick="deleteFile()">删除</button>
                 <button>下载</button>
                 <button onclick="newopen(historyo)">历史</button>
             </div>
@@ -97,28 +95,39 @@
     <div id="newfile" class="newwindow">
         <div class="newtop">
             <p class="newtitle">新建文件</p>
-            <span>确定</span>
+            <span onclick="add(addFile)">确定</span>
             <span class="close" onclick="newclose(newfile)">关闭</span>
         </div>
         <div class="newmain">
+         	<form id="addFile" action="addFile.action">
+         	<input type="hidden" name="folder.id" value="<s:property value="folder.id"/>">
             <table>
                 <tr>
                     <td>文件主题</td>
-                    <td><input type="text"></td>
+                    <td><input name="file.theme" type="text"></td>
                 </tr>
                 <tr>
                     <td>文件类型</td>
-                    <td><select name="types"></select></td>
+                    <td>
+                    	<select name="file.type">
+                    		<option value ="doc">doc</option>
+                    		<option value ="ppt">ppt</option>
+                    		<option value ="jpg">jpg</option>
+                    		<option value ="png">png</option>
+                    		<option value ="docx">docx</option>
+                    	</select>
+                    </td>
                 </tr>
                 <tr>
                     <td>关键字</td>
-                    <td><input class="textarea" type="textarea"></td>
+                    <td><input name="file.keyword" class="textarea" type="textarea"></td>
                 </tr>
                 <tr>
                     <td>所属文件夹</td>
-                    <td><input type="text"></td>
+                    <td><input name="file.superiorFolder" type="text"></td>
                 </tr>
             </table>
+            </form>
         </div>
     </div>
     <div id="newfolder" class="newwindow">
@@ -192,10 +201,6 @@
                     <td><input id="querytextarea" class="textarea" type="textarea"></td>
                 </tr>
                 <tr>
-                    <td>文件信息</td>
-                    <td><input type="file" value="附件上传"></td>
-                </tr>
-                <tr>
                     <td>创建者</td>
                     <td>
                         <select class="queryselect">
@@ -239,16 +244,6 @@
             </table>
         </div>
     </div>
+    <%-- <s:debug></s:debug> --%>
 </body>
 </html>
-
-
-<%-- <s:iterator value="files" status="status">
-				<tr>
-					<td>${name}</td>
-					<td>${size}</td>
-					<td>${hits}</td>
-					<td>${updateTime}</td>
-					<td>操作</td>
-				</tr>
-			</s:iterator> --%>

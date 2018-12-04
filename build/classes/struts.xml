@@ -8,8 +8,11 @@
 	<constant name="struts.objectFactory" value="spring" />
 
 	<package name="defalut" namespace="/" extends="struts-default">
-		<action name="listFile" class="FileActionBean" method="list">
-			<result name="listJsp">file.jsp</result>
+		<action name="index" class="indexActionBean" method="list">
+			<result name="listJsp">list.jsp</result>
+		</action>
+		<action name="*File" class="fileActionBean" method="{1}">
+			<result type="redirectAction" name="success">index</result>
 		</action>
 	</package>
 </struts>

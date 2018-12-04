@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.FileDAO;
 import pojo.File;
+import pojo.Folder;
 import service.FileService;
 
 /**
@@ -22,8 +23,8 @@ public class FileServiceImpl implements FileService {
 		this.fileDAO = fileDAO;
 	}
 
-	public List<File> list() {
-		return fileDAO.list();
+	public List<File> list(Folder folder) {
+		return fileDAO.list(folder);
 	}
 	
 	public void add(File file) {
