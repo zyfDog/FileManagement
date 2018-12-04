@@ -14,6 +14,9 @@
  	<bean name="fileActionBean" class="action.FileAction">
  		<property name="fileService" ref="fileServiceImpl"></property>
  	</bean>
+ 	<bean name="folderActionBean" class="action.FolderAction">
+ 		<property name="folderService" ref="folderServiceImpl"></property>
+ 	</bean>
  	
 	<bean name="fileServiceImpl" class="service.impl.FileServiceImpl">
 		<property name="fileDAO" ref="fileDAOImpl"></property>

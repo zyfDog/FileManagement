@@ -35,6 +35,5 @@ function deleteFile(){
 	window.location='deleteFile?deleteFiles='+value.toString();
 }
 function add(a) {
-	console.log(a);
 	a.submit();
 }

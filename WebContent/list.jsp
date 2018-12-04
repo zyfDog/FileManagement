@@ -133,24 +133,26 @@
     <div id="newfolder" class="newwindow">
         <div class="newtop">
             <p class="newtitle">新建文件夹</p>
-            <span>保存</span>
+            <span onclick="add(addFolder)">保存</span>
             <span class="close" onclick="newclose(newfolder)">关闭</span>
         </div>
         <div class="newmain">
+        	<form id="addFolder" action="addFolder.action">
             <table>
                 <tr>
                     <td>文件夹名称</td>
-                    <td><input type="text"></td>
+                    <td><input name="folder.name" type="text"></td>
                 </tr>
                 <tr>
                     <td>关键字</td>
-                    <td><input class="textarea" type="textarea"></td>
-                </tr>
+                    <td><input name="folder.keyword" class="textarea" type="textarea"></td>
+                </tr> 
                 <tr>
                     <td>上级文件夹</td>
-                    <td><input type="text"></td>
+                    <td><input name="folder.superiorFolder.id" type="text"></td>
                 </tr>
             </table>
+            </form>
         </div>
     </div>
     <div id="upload" class="newwindow">

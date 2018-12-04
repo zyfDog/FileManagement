@@ -14,5 +14,8 @@
 		<action name="*File" class="fileActionBean" method="{1}">
 			<result type="redirectAction" name="success">index</result>
 		</action>
+		<action name="*Folder" class="folderActionBean" method="{1}">
+			<result type="redirectAction" name="success">index</result>
+		</action>
 	</package>
 </struts>
