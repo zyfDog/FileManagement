@@ -16,6 +16,7 @@ public class IndexAction {
 	private FolderService folderService;
 	private List<File> files;
 	private List<Folder> folders;
+	private List<Folder> allFolders;
 	private Folder folder;
 
 	public FileService getFileService() {
@@ -50,6 +51,14 @@ public class IndexAction {
 		this.folders = folders;
 	}
 
+	public List<Folder> getAllFolders() {
+		return allFolders;
+	}
+
+	public void setAllFolders(List<Folder> allFolders) {
+		this.allFolders = allFolders;
+	}
+
 	public Folder getFolder() {
 		return folder;
 	}
@@ -61,7 +70,7 @@ public class IndexAction {
 	public String list() {
 		files = fileService.list(folder);
 		folders = folderService.list();
-		System.out.println(folders);
+		allFolders = folderService.listAll();
 		return "listJsp";
 	}
 }

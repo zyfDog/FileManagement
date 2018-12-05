@@ -30,6 +30,9 @@ public class FolderAction extends ActionSupport{
 	}
 	
 	public String add() {
+		if(folder.getSuperiorFolder().getId() == 0) {
+			folder.setSuperiorFolder(null);
+		}
 		folderService.add(folder);
 		return SUCCESS;
 	}

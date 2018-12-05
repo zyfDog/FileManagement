@@ -10,6 +10,8 @@ import pojo.Folder;
  */
 public interface FolderDAO {
 	
+	public List<Folder> listAll();
+	
 	public List<Folder> list();
 	
 	public void add(Folder folder);

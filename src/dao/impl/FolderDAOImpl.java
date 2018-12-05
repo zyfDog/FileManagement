@@ -13,6 +13,10 @@ import pojo.Folder;
  */
 public class FolderDAOImpl extends HibernateTemplate implements FolderDAO {
 
+	public List<Folder> listAll() {
+		return find("from Folder");
+	}
+	
 	public List<Folder> list() {
 		return find("from Folder where superiorFolder is null");
 	}

@@ -62,12 +62,8 @@ public class FileAction extends ActionSupport {
 	}
 
 	public String add() {
-		System.out.println(folder.getId());
-		if (file.getName() == null) {
-			file.setName(file.getTheme());
-		}
+	    file.setName(file.getTheme());
 		file.setName(file.getName() + "." + file.getType());
-		file.setSuperiorFolder(folder);
 		file.setUpdateTime(new Date());
 		fileService.add(file);
 		return SUCCESS;

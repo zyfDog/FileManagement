@@ -22,6 +22,10 @@ public class FolderServiceImpl implements FolderService {
 		this.folderDAO = folderDAO;
 	}
 
+	public List<Folder> listAll() {
+		return folderDAO.listAll();
+	}
+	
 	public List<Folder> list() {
 		return folderDAO.list();
 	}

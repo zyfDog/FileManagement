@@ -100,7 +100,6 @@
         </div>
         <div class="newmain">
          	<form id="addFile" action="addFile.action">
-         	<input type="hidden" name="folder.id" value="<s:property value="folder.id"/>">
             <table>
                 <tr>
                     <td>文件主题</td>
@@ -124,7 +123,13 @@
                 </tr>
                 <tr>
                     <td>所属文件夹</td>
-                    <td><input name="file.superiorFolder" type="text"></td>
+                    <td>
+                    	<select name="file.superiorFolder.id">
+                    		<s:iterator value="allFolders" var="var" status="status">
+                    			<option value = "${id}">${name}</option>
+                    		</s:iterator>
+                    	</select>
+                    </td>
                 </tr>
             </table>
             </form>
@@ -149,7 +154,13 @@
                 </tr> 
                 <tr>
                     <td>上级文件夹</td>
-                    <td><input name="folder.superiorFolder.id" type="text"></td>
+                    <td>
+						<select name="folder.superiorFolder.id">
+                    		<s:iterator value="folders" status="status">
+                    			<option value = "${id}">${name}</option>
+                    		</s:iterator>
+                    	</select>
+                    </td>
                 </tr>
             </table>
             </form>

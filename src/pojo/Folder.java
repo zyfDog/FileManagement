@@ -57,7 +57,7 @@ public class Folder {
 	@Override
 	public String toString() {
 
-		return  id + name + "["+childrenFolder+"]" ;
+		return  id + name + keyword + superiorFolder;
 
 	}
 
