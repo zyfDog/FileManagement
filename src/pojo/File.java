@@ -108,4 +108,11 @@ public class File {
 		this.path = path;
 	}
 
+	@Override
+	public String toString() {
+		return "File [id=" + id + ", name=" + name + ", theme=" + theme + ", type=" + type + ", keyword=" + keyword
+				+ ", size=" + size + ", hits=" + hits + ", updateTime=" + updateTime + ", updateUser=" + updateUser
+				+ ", superiorFolder=" + superiorFolder + ", path=" + path + "]";
+	}
+
 }

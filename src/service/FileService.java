@@ -16,4 +16,8 @@ public interface FileService {
 	public void add(File file);
 	
 	public void delete(File file);
+	
+	public List<File> downloadList(List<Integer> ids);
+	
+	public File get(Integer id);
 }

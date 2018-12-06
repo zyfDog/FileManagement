@@ -26,7 +26,7 @@ function listFile(folderId) {
 	window.location.href="index?folder.id="+folderId;
 }
 function deleteFile(){
-	var id = document.getElementsByName('deleteFiles');
+	var id = document.getElementsByName('selectFiles');
 	var value = new Array();
 	for(var i = 0; i < id.length; i++) {
 		if(id[i].checked)
@@ -36,4 +36,13 @@ function deleteFile(){
 }
 function add(a) {
 	a.submit();
+}
+function downloadFile(){
+	var id = document.getElementsByName('selectFiles');
+	var value = new Array();
+	for(var i = 0; i < id.length; i++) {
+		if(id[i].checked)
+			value.push(id[i].value);
+	}
+	window.location='download?downloadFiles='+value.toString();
 }

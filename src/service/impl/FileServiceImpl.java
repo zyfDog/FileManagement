@@ -34,4 +34,12 @@ public class FileServiceImpl implements FileService {
 	public void delete(File file) {
 		fileDAO.delete(file);
 	}
+	
+	public List<File> downloadList(List<Integer> ids) {
+		 return fileDAO.downloadList(ids);
+	}
+	
+	public File get(Integer id) {
+		return fileDAO.get(id);
+	}
 }

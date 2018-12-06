@@ -17,5 +17,13 @@
 		<action name="*Folder" class="folderActionBean" method="{1}">
 			<result type="redirectAction" name="success">index</result>
 		</action>
+		<action name="upload" class="uploadActionBean">
+			<result type="redirectAction" name="success">index</result>
+		</action>
+		<action name="download" class="downloadActionBean">
+			<result type="stream">
+				<param name="bufferSize">2048</param>
+			</result>
+		</action>
 	</package>
 </struts>

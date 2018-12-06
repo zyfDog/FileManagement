@@ -75,7 +75,7 @@
                 </tr>
                 <s:iterator value="files" status="status">
 				<tr>
-					<td><input name="deleteFiles" type="checkbox" value="${id}"></td>
+					<td><input name="selectFiles" type="checkbox" value="${id}"></td>
 					<td>${name}</td>
 					<td>${size}</td>
 					<td>${hits}</td>
@@ -87,7 +87,7 @@
             <div id="mainrightbottom">
                 <button>转存</button>
                 <button onclick="deleteFile()">删除</button>
-                <button>下载</button>
+                <button onclick="downloadFile()">下载</button>
                 <button onclick="newopen(historyo)">历史</button>
             </div>
         </div>
@@ -169,28 +169,36 @@
     <div id="upload" class="newwindow">
         <div class="newtop">
             <p class="newtitle">文件上传</p>
-            <span>确定</span>
+            <span onclick="add(uploadForm)">确定</span>
             <span class="close" onclick="newclose(upload)">关闭</span>
         </div>
         <div class="newmain">
+        	<form id="uploadForm" action="upload.action" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>文件主题</td>
-                    <td><input type="text"></td>
+                    <td><input name="file.theme" type="text"></td>
                 </tr>
                 <tr>
                     <td>关键字</td>
-                    <td><input class="textarea" type="textarea"></td>
+                    <td><input name="file.keyword" class="textarea" type="textarea"></td>
                 </tr>
                 <tr>
                     <td>文件信息</td>
-                    <td><input type="file" value="附件上传"></td>
+                    <td><input type="file" name="doc"></td>
                 </tr>
                 <tr>
                     <td>所属文件夹</td>
-                    <td><input type="text"></td>
+                    <td>
+						<select name="file.superiorFolder.id">
+                    		<s:iterator value="allFolders" var="var" status="status">
+                    			<option value = "${id}">${name}</option>
+                    		</s:iterator>
+                    	</select>
+                    </td>
                 </tr>
             </table>
+            </form>
         </div>
     </div>
     <div id="query" class="newwindow">
