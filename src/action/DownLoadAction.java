@@ -80,7 +80,15 @@ public class DownLoadAction extends ActionSupport {
 		File file = fileService.get(Integer.valueOf(downloadFiles));
 		
 		contentDisposition = "attachment;filename=" + file.getName();
-		inputStream = new FileInputStream(file.getPath());
+		if(file.getPath() == null) {
+			java.io.File newFile = new java.io.File("F:\\eclipse-workspace\\FileManagement\\WebContent\\files\\" + file.getName());
+			if(!newFile.exists())
+				newFile.createNewFile();
+			inputStream = new FileInputStream(newFile);
+		}
+		else {
+			inputStream = new FileInputStream(file.getPath());
+		}
 		
 		contentLength = inputStream.available();
 		
