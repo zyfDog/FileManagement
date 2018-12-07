@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2018-11-27 17:03:11 by Hibernate Tools 3.5.0.Final -->
+<!-- Generated 2018-12-7 16:44:56 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="pojo.User" table="user">
         <id name="id" type="int">
@@ -10,6 +10,12 @@
         </id>
         <property name="name" type="java.lang.String">
             <column name="name" />
+        </property>
+        <property name="account" type="java.lang.String">
+            <column name="account" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="password" />
         </property>
         <property name="department" type="java.lang.String">
             <column name="department" />

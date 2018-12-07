@@ -32,7 +32,8 @@ function deleteFile(){
 		if(id[i].checked)
 			value.push(id[i].value);
 	}
-	window.location='deleteFile?deleteFiles='+value.toString();
+	if(value.length > 0)
+		window.location='deleteFile?deleteFiles='+value.toString();
 }
 function add(a) {
 	a.submit();
@@ -44,5 +45,6 @@ function downloadFile(){
 		if(id[i].checked)
 			value.push(id[i].value);
 	}
-	window.location='download?downloadFiles='+value.toString();
+	if(value.length > 0)
+	   window.location='download?downloadFiles='+value.toString();
 }
