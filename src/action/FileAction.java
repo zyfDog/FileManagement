@@ -1,7 +1,9 @@
 package action;
 
 import java.util.Date;
+import java.util.List;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import pojo.File;
@@ -17,6 +19,10 @@ public class FileAction extends ActionSupport {
 	private String deleteFiles;
 	private File file;
 	private Folder folder;
+	private File queryFile;
+	private Date beforeQueryDate;
+	private Date afterQueryDate;
+	private List<File> queryFiles;
 
 	public FileService getFileService() {
 		return fileService;
@@ -50,6 +56,38 @@ public class FileAction extends ActionSupport {
 		this.folder = folder;
 	}
 
+	public File getQueryFile() {
+		return queryFile;
+	}
+
+	public void setQueryFile(File queryFile) {
+		this.queryFile = queryFile;
+	}
+
+	public Date getBeforeQueryDate() {
+		return beforeQueryDate;
+	}
+
+	public void setBeforeQueryDate(Date beforeQueryDate) {
+		this.beforeQueryDate = beforeQueryDate;
+	}
+
+	public Date getAfterQueryDate() {
+		return afterQueryDate;
+	}
+
+	public void setAfterQueryDate(Date afterQueryDate) {
+		this.afterQueryDate = afterQueryDate;
+	}
+
+	public List<File> getQueryFiles() {
+		return queryFiles;
+	}
+
+	public void setQueryFiles(List<File> queryFiles) {
+		this.queryFiles = queryFiles;
+	}
+
 	public String delete() {
 		String[] values = deleteFiles.split(",");
 		for (String value : values) {
@@ -62,11 +100,18 @@ public class FileAction extends ActionSupport {
 	}
 
 	public String add() {
-	    file.setName(file.getTheme());
+		file.setName(file.getTheme());
 		file.setName(file.getName() + "." + file.getType());
 		file.setCreateTime(new Date());
 		fileService.add(file);
 		return SUCCESS;
+	}
+
+	public String query() {
+		queryFiles = fileService.query(queryFile.getName(), queryFile.getTheme(), 
+				queryFile.getKeyword(), queryFile.getCreateUser(), beforeQueryDate, afterQueryDate);
+		ActionContext.getContext().put("queryFiles", queryFiles);
+		return "querysuccess";
 	}
 
 }

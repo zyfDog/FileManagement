@@ -1,5 +1,6 @@
 package dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.orm.hibernate3.HibernateTemplate;
@@ -7,6 +8,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import dao.FileDAO;
 import pojo.File;
 import pojo.Folder;
+import pojo.User;
 
 /**
  * @author: 詹亦凡
@@ -33,11 +35,24 @@ public class FileDAOImpl extends HibernateTemplate implements FileDAO {
 		}
 		hql.deleteCharAt(hql.length()-1);
 		hql.append(")");
-		System.out.println(hql);
 		return find(hql.toString());
 	}
 	
 	public File get(Integer id) {
 		return (File)get(File.class,id);
+	}
+	
+	public List<File> query(String name, String theme, String keyword, User user, Date beforeQueryDate,
+			Date afterQueryDate) {
+		StringBuilder hql = new StringBuilder("from File where 1=1 ");
+		if(name != null && !name.equals("")) 
+			hql.append("and name like '%" + name + "%'");
+		if(theme != null && !theme.equals(""))
+			hql.append("and theme like '%" + theme + "%'");
+		if(keyword != null && !keyword.equals(""))
+			hql.append("and keyword like '%" + keyword + "%'");
+		if(beforeQueryDate != null && afterQueryDate != null) 
+			hql.append("and createTime between '" + beforeQueryDate + "' and '" + afterQueryDate + "'");
+		return find(hql.toString());
 	}
 }

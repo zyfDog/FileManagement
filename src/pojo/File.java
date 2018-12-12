@@ -16,7 +16,7 @@ public class File {
 	private int size;
 	private int hits;
 	private Date createTime;
-	private Date createUser;
+	private User createUser;
 	private Date updateTime;
 	private User updateUser;
 	private Folder superiorFolder;
@@ -86,11 +86,11 @@ public class File {
 		this.createTime = createTime;
 	}
 
-	public Date getCreateUser() {
+	public User getCreateUser() {
 		return createUser;
 	}
 
-	public void setCreateUser(Date createUser) {
+	public void setCreateUser(User createUser) {
 		this.createUser = createUser;
 	}
 

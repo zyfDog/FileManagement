@@ -1,10 +1,12 @@
 package service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import dao.FileDAO;
 import pojo.File;
 import pojo.Folder;
+import pojo.User;
 import service.FileService;
 
 /**
@@ -41,5 +43,10 @@ public class FileServiceImpl implements FileService {
 	
 	public File get(Integer id) {
 		return fileDAO.get(id);
+	}
+	
+	public List<File> query(String name, String theme, String keyword, User user, Date beforeQueryDate,
+			Date afterQueryDate) {
+		return fileDAO.query(name, theme, keyword, user, beforeQueryDate, afterQueryDate);
 	}
 }

@@ -65,17 +65,31 @@
                     <th class="updatetime">最后更新</th>
                     <th class="operation">操作</th>
                 </tr>
-                <s:iterator value="files" status="status">
-					<tr>
-						<td><input name="selectFiles" type="checkbox" value="${id}"></td>
-						<td>${name}</td>
-						<td>${size}</td>
-						<td>${hits}</td>
-						<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm"/></td>
-						<td>操作</td>
-					</tr>
-				</s:iterator>
-            </table>
+				<s:if test="queryFiles.size != 0">
+					<s:iterator value="queryFiles" status="status">
+						<tr>
+							<td><input name="selectFiles" type="checkbox" value="${id}"></td>
+							<td>${name}</td>
+							<td>${size}</td>
+							<td>${hits}</td>
+							<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm" /></td>
+							<td>操作</td>
+						</tr>
+					</s:iterator>
+				</s:if>
+				<s:else>
+					<s:iterator value="files" status="status">
+						<tr>
+							<td><input name="selectFiles" type="checkbox" value="${id}"></td>
+							<td>${name}</td>
+							<td>${size}</td>
+							<td>${hits}</td>
+							<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm" /></td>
+							<td>操作</td>
+						</tr>
+					</s:iterator>
+				</s:else>
+			</table>
             <div id="mainrightbottom">
                 <button>转存</button>
                 <button onclick="deleteFile()">删除</button>
@@ -200,20 +214,20 @@
             <span class="close" onclick="newclose(query)">关闭</span>
         </div>
         <div id="querymain" class="newmain">
-        	<s:form id="queryFrom">
+        	<s:form id="queryFrom" action="queryFile">
                 <tr>
                     <td>文件名</td>
-                    <td><input name="name" type="text"></td>
+                    <td><input name="queryFile.name" type="text"></td>
                 </tr>
                 <tr>
                     <td>文件主题</td>
-                    <td><input name="theme" type="text"></td>
+                    <td><input name="queryFile.theme" type="text"></td>
                 </tr>
 				<tr>
 					<td>关键字</td>
-					<td><input name="keyword" id="querytextarea" class="textarea" type="textarea"></td>
+					<td><input name="queryFile.keyword" id="querytextarea" class="textarea" type="textarea"></td>
 				</tr>
-				<s:doubleselect label="创建者" name="createUser.department" list="userMap.keySet()"
+				<s:doubleselect label="创建者" name="queryFile.createUser.department" list="userMap.keySet()" headerKey="" headerValue="请选择部门"
 					doubleName="createUser.name" doubleList="userMap[top]" 
 					doubleListKey="name" doubleListValue="name" >
 				</s:doubleselect>
@@ -246,6 +260,6 @@
             </table>
         </div>
     </div>
-    <%-- <s:debug></s:debug> --%>
+    <s:debug></s:debug>
 </body>
 </html>

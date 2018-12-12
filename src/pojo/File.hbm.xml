@@ -38,7 +38,7 @@
         <many-to-one name="updateUser" class="pojo.User" fetch="join">
             <column name="updateuser" />
         </many-to-one>
-        <many-to-one name="superiorFolder" class="pojo.Folder" fetch="join">
+        <many-to-one name="superiorFolder" class="pojo.Folder" fetch="join" lazy="false">
             <column name="superior_folder" />
         </many-to-one>
         <property name="path" type="java.lang.String">

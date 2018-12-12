@@ -1,8 +1,11 @@
 package action;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import com.opensymphony.xwork2.ActionContext;
 
 import pojo.File;
 import pojo.Folder;
@@ -24,6 +27,7 @@ public class IndexAction {
 	private List<Folder> allFolders;
 	private Map<String, List<User>> userMap;
 	private Folder folder;
+	private List<File> queryFiles = new ArrayList<>();
 
 	public FileService getFileService() {
 		return fileService;
@@ -89,14 +93,26 @@ public class IndexAction {
 		this.userService = userService;
 	}
 
+	public List<File> getQueryFiles() {
+		return queryFiles;
+	}
+
+	public void setQueryFiles(List<File> queryFiles) {
+		this.queryFiles = queryFiles;
+	}
+
 	public String list() {
+		queryFiles = (List<File>) ActionContext.getContext().get("queryFiles");
+		if(queryFiles != null && queryFiles.size() !=0) {
+			Folder folder = new Folder();
+			folder.setId(0);
+			this.folder = folder;
+		}
 		files = fileService.list(folder);
 		folders = folderService.list();
 		allFolders = folderService.listAll();
 		List<User> users = userService.getList();
-		System.out.println("zzz" + users);
 		userMap = (Map<String, List<User>>) users.stream().collect(Collectors.groupingBy(User::getDepartment));
-		System.out.println("zzz" + userMap);
 		return "listJsp";
 	}
 }
