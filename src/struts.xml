@@ -9,7 +9,7 @@
 
 	<package name="defalut" namespace="/" extends="struts-default">
 		<action name="login" class="loginActionBean">
-			<result type="redirectAction" name="success">index.action?folder.id=1</result>
+			<result type="redirectAction" name="success">index.action?folder.id=0</result>
 			<result name="reLogin">login.jsp</result>
 		</action>
 		<action name="index" class="indexActionBean" method="list">

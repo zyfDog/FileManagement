@@ -1,5 +1,7 @@
 package dao.impl;
 
+import java.util.List;
+
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import dao.UserDAO;
@@ -15,4 +17,7 @@ public class UserDAOImpl extends HibernateTemplate implements UserDAO{
 		return (User) find("from User where account='" + account +"'").get(0);
 	}
 
+	public List<User> getList() {
+		return find("from User");
+	}
 }

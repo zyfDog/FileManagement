@@ -1,11 +1,15 @@
 package action;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import pojo.File;
 import pojo.Folder;
+import pojo.User;
 import service.FileService;
 import service.FolderService;
+import service.UserService;
 
 /**
  * @author: 詹亦凡
@@ -14,9 +18,11 @@ import service.FolderService;
 public class IndexAction {
 	private FileService fileService;
 	private FolderService folderService;
+	private UserService userService;
 	private List<File> files;
 	private List<Folder> folders;
 	private List<Folder> allFolders;
+	private Map<String, List<User>> userMap;
 	private Folder folder;
 
 	public FileService getFileService() {
@@ -67,10 +73,30 @@ public class IndexAction {
 		this.folder = folder;
 	}
 
+	public Map<String, List<User>> getUserMap() {
+		return userMap;
+	}
+
+	public void setUserMap(Map<String, List<User>> userMap) {
+		this.userMap = userMap;
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
 	public String list() {
 		files = fileService.list(folder);
 		folders = folderService.list();
 		allFolders = folderService.listAll();
+		List<User> users = userService.getList();
+		System.out.println("zzz" + users);
+		userMap = (Map<String, List<User>>) users.stream().collect(Collectors.groupingBy(User::getDepartment));
+		System.out.println("zzz" + userMap);
 		return "listJsp";
 	}
 }

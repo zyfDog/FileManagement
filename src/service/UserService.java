@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import pojo.User;
 
 /**
@@ -9,5 +11,7 @@ import pojo.User;
 public interface UserService {
 	
 	public User get(String account);
+	
+	public List<User> getList();
 	
 }

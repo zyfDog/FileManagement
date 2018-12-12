@@ -15,6 +15,8 @@ public class File {
 	private String keyword;
 	private int size;
 	private int hits;
+	private Date createTime;
+	private Date createUser;
 	private Date updateTime;
 	private User updateUser;
 	private Folder superiorFolder;
@@ -74,6 +76,22 @@ public class File {
 
 	public void setHits(int hits) {
 		this.hits = hits;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public Date getCreateUser() {
+		return createUser;
+	}
+
+	public void setCreateUser(Date createUser) {
+		this.createUser = createUser;
 	}
 
 	public Date getUpdateTime() {

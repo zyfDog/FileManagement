@@ -1,5 +1,7 @@
 package service.impl;
 
+import java.util.List;
+
 import dao.UserDAO;
 import pojo.User;
 import service.UserService;
@@ -25,6 +27,10 @@ public class UserServiceImpl implements UserService{
 
 	public User get(String account) {
 		return userDAO.get(account);
+	}
+	
+	public List<User> getList() {
+		return userDAO.getList();
 	}
 
 }

@@ -13,6 +13,7 @@
  	<bean name="indexActionBean" class="action.IndexAction">
  		<property name="fileService" ref="fileServiceImpl"></property>
  		<property name="folderService" ref="folderServiceImpl"></property>
+ 		<property name="userService" ref="userServiceImpl"></property>
  	</bean>
  	<bean name="fileActionBean" class="action.FileAction">
  		<property name="fileService" ref="fileServiceImpl"></property>

@@ -45,6 +45,8 @@ function downloadFile(){
 		if(id[i].checked)
 			value.push(id[i].value);
 	}
-	if(value.length > 0)
+	if(value.length > 1)
+		alert("一次只能下载一个文件");
+	if(value.length == 1)
 	   window.location='download?downloadFiles='+value.toString();
 }

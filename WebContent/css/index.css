@@ -333,3 +333,9 @@ body{
 #sidenav li{
     cursor:pointer;
 }
+#querymain select{
+	width: 150px;
+}
+#querymain br{
+	display:none;
+}

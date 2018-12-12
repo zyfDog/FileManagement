@@ -64,7 +64,7 @@ public class FileAction extends ActionSupport {
 	public String add() {
 	    file.setName(file.getTheme());
 		file.setName(file.getName() + "." + file.getType());
-		file.setUpdateTime(new Date());
+		file.setCreateTime(new Date());
 		fileService.add(file);
 		return SUCCESS;
 	}

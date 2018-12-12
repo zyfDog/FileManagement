@@ -65,24 +65,16 @@
                     <th class="updatetime">最后更新</th>
                     <th class="operation">操作</th>
                 </tr>
-                <tr>
-                    <td><input type="checkbox"></td>
-                    <td>OA办公系统功能介绍.doc</td>
-                    <td>170.0KB</td>
-                    <td>19</td>
-                    <td>2012-05-08 22:13 赵华威</td>
-                    <td><a href="www.baidu.com">属性</a>&nbsp;<a>重命名</a></td>
-                </tr>
                 <s:iterator value="files" status="status">
-				<tr>
-					<td><input name="selectFiles" type="checkbox" value="${id}"></td>
-					<td>${name}</td>
-					<td>${size}</td>
-					<td>${hits}</td>
-					<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm"/></td>
-					<td>操作</td>
-				</tr>
-			</s:iterator>
+					<tr>
+						<td><input name="selectFiles" type="checkbox" value="${id}"></td>
+						<td>${name}</td>
+						<td>${size}</td>
+						<td>${hits}</td>
+						<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm"/></td>
+						<td>操作</td>
+					</tr>
+				</s:iterator>
             </table>
             <div id="mainrightbottom">
                 <button>转存</button>
@@ -204,44 +196,33 @@
     <div id="query" class="newwindow">
         <div class="newtop">
             <p id="querytitle">查询条件设置</p>
-            <span>确定</span>
+            <span onclick="add(queryFrom)">确定</span>
             <span class="close" onclick="newclose(query)">关闭</span>
         </div>
-        <div class="newmain">
-            <table>
+        <div id="querymain" class="newmain">
+        	<s:form id="queryFrom">
                 <tr>
                     <td>文件名</td>
-                    <td><input type="text"></td>
+                    <td><input name="name" type="text"></td>
                 </tr>
                 <tr>
                     <td>文件主题</td>
-                    <td><input type="text"></td>
+                    <td><input name="theme" type="text"></td>
                 </tr>
-                <tr>
-                    <td>关键字</td>
-                    <td><input id="querytextarea" class="textarea" type="textarea"></td>
-                </tr>
-                <tr>
-                    <td>创建者</td>
-                    <td>
-                        <select class="queryselect">
-                            <option  disabled selected hidden>请选择部门</option>
-                        </select>
-                        &nbsp;
-                        <select class="queryselect">
-                            <option  disabled selected hidden>请选择人员</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>创建日期</td>
-                    <td>
-                        <input id="querydate" type="date">
-                        &nbsp;至&nbsp;
-                        <input id="querydate2" type="date">
-                    </td>
-                </tr>
-            </table>
+				<tr>
+					<td>关键字</td>
+					<td><input name="keyword" id="querytextarea" class="textarea" type="textarea"></td>
+				</tr>
+				<s:doubleselect label="创建者" name="createUser.department" list="userMap.keySet()"
+					doubleName="createUser.name" doubleList="userMap[top]" 
+					doubleListKey="name" doubleListValue="name" >
+				</s:doubleselect>
+				<tr>
+					<td>创建日期</td>
+					<td><input id="querydate" name="beforeQueryDate" type="date"> &nbsp;至&nbsp; <input
+						id="querydate2" name="afterQueryDate" type="date"></td>
+				</tr>
+			</s:form>
         </div>
     </div>
     <div id="historyo" class="newwindow">
