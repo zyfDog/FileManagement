@@ -33,4 +33,20 @@ public class FolderServiceImpl implements FolderService {
 	public void add(Folder folder) {
 		folderDAO.add(folder);
 	}
+	
+	public String getCurrentPath(Folder folder) {
+		if(folder.getId() == 0) {
+			return "/";
+		}
+		StringBuilder currentPath = new StringBuilder(""); 
+		folder = folderDAO.get(folder.getId());
+		Folder superiorFolder = folder;
+		 
+		currentPath.append("/" + superiorFolder.getName() + "/");
+		while(superiorFolder.getSuperiorFolder() != null) {
+			superiorFolder = folderDAO.get(superiorFolder.getSuperiorFolder().getId());
+			currentPath.insert(0, "/" + superiorFolder.getName()); 
+		}
+		return currentPath.toString();
+	}
 }

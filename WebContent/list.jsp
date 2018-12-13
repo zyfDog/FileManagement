@@ -22,13 +22,13 @@
             </ul>
         </div>
         <div id="headerpath">
-            <span>当前路径:</span>
+            <span class="headerpathspan">当前路径:</span>
             <img src="img/file.png"/>
             <div id="path">
-
+				<span id="currentpath">${currentPath}</span>
             </div>
             <img src="img/file.png"/>
-            <span>属性</span>
+            <span class="headerpathspan">属性</span>
         </div>
     </div>
     <div id="main">
@@ -162,6 +162,7 @@
                     <td>上级文件夹</td>
                     <td>
 						<select name="folder.superiorFolder.id">
+							<option value="0" selected="selected">无</option >
                     		<s:iterator value="folders" status="status">
                     			<option value = "${id}">${name}</option>
                     		</s:iterator>
@@ -260,6 +261,6 @@
             </table>
         </div>
     </div>
-    <s:debug></s:debug>
+    <%-- <s:debug></s:debug> --%>
 </body>
 </html>

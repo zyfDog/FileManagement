@@ -78,35 +78,20 @@ public class DownLoadAction extends ActionSupport {
 		ServletContext servletContext = ServletActionContext.getServletContext();
 
 		File file = fileService.get(Integer.valueOf(downloadFiles));
-		
+
 		contentDisposition = "attachment;filename=" + file.getName();
-		if(file.getPath() == null) {
-			java.io.File newFile = new java.io.File("F:\\eclipse-workspace\\FileManagement\\WebContent\\files\\" + file.getName());
-			if(!newFile.exists())
+		if (file.getPath() == null) {
+			java.io.File newFile = new java.io.File(
+					"F:\\eclipse-workspace\\FileManagement\\WebContent\\files\\" + file.getName());
+			if (!newFile.exists())
 				newFile.createNewFile();
 			inputStream = new FileInputStream(newFile);
-		}
-		else {
+		} else {
 			inputStream = new FileInputStream(file.getPath());
 		}
-		
+
 		contentLength = inputStream.available();
-		
+
 		return SUCCESS;
 	}
-
-	/*public List<String> getPaths(String downloadFiles) {
-		String[] values = downloadFiles.split(",");
-		List<Integer> ids = new ArrayList<>();
-		for (String value : values) {
-			ids.add(Integer.valueOf(value));
-			System.out.println(value + "zzzzzzz");
-		}
-		List<pojo.File> files = fileService.downloadList(ids);
-		List<String> paths = new ArrayList<>();
-		for (pojo.File file : files) {
-			paths.add(file.getPath());
-		}
-		return paths;
-	}*/
 }

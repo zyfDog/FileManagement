@@ -1,6 +1,8 @@
 package service.impl;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import dao.UserDAO;
 import pojo.User;
@@ -31,6 +33,11 @@ public class UserServiceImpl implements UserService{
 	
 	public List<User> getList() {
 		return userDAO.getList();
+	}
+	
+	public Map<String, List<User>> getMap() {
+		List<User> users = userDAO.getList();
+		return (Map<String, List<User>>) users.stream().collect(Collectors.groupingBy(User::getDepartment)); 
 	}
 
 }

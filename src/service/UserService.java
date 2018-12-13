@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import java.util.Map;
 
 import pojo.User;
 
@@ -13,5 +14,7 @@ public interface UserService {
 	public User get(String account);
 	
 	public List<User> getList();
+	
+	public Map<String, List<User>> getMap();
 	
 }

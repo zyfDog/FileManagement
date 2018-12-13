@@ -39,7 +39,7 @@ public class FileDAOImpl extends HibernateTemplate implements FileDAO {
 	}
 	
 	public File get(Integer id) {
-		return (File)get(File.class,id);
+		return get(File.class,id);
 	}
 	
 	public List<File> query(String name, String theme, String keyword, User user, Date beforeQueryDate,

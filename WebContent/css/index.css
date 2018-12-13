@@ -54,7 +54,7 @@ body{
     background: skyblue;
     border-top: white 1px solid;
 }
-#headerpath span{
+.headerpathspan{
     float: left;
     display: block;
     height: 30px;
@@ -338,4 +338,11 @@ body{
 }
 #querymain br{
 	display:none;
+}
+#currentpath{
+	display: block;
+    height: 35px;
+    padding-bottom: 0px;
+    padding-top: 5px;
+    margin-left: 20px;
 }

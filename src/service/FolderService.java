@@ -16,4 +16,6 @@ public interface FolderService {
 	public List<Folder> list();
 	
 	public void add(Folder folder);
+	
+	public String getCurrentPath(Folder folder);
 }

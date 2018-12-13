@@ -15,5 +15,7 @@ public interface FolderDAO {
 	public List<Folder> list();
 	
 	public void add(Folder folder);
+	
+	public Folder get(Integer id);
 
 }

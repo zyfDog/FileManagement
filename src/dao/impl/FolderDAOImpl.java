@@ -24,4 +24,8 @@ public class FolderDAOImpl extends HibernateTemplate implements FolderDAO {
 	public void add(Folder folder) {
 		save(folder);
 	}
+	
+	public Folder get(Integer id) {
+		return get(Folder.class, id);
+	}
 }

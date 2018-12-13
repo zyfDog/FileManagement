@@ -19,7 +19,7 @@ public class FileAction extends ActionSupport {
 	private String deleteFiles;
 	private File file;
 	private Folder folder;
-	private File queryFile;
+	private File queryFile;//用于接收查询条件
 	private Date beforeQueryDate;
 	private Date afterQueryDate;
 	private List<File> queryFiles;
