@@ -28,4 +28,8 @@ public class FolderDAOImpl extends HibernateTemplate implements FolderDAO {
 	public Folder get(Integer id) {
 		return get(Folder.class, id);
 	}
+	
+	public List<Folder> getChildren(Folder folder) {
+		return find("from Folder where superiorFolder=" + folder.getId());
+	}
 }

@@ -35,7 +35,7 @@
         <property name="updateTime" type="java.util.Date">
             <column name="updatetime" />
         </property>
-        <many-to-one name="updateUser" class="pojo.User" fetch="join">
+        <many-to-one name="updateUser" class="pojo.User" fetch="join" lazy="false">
             <column name="updateuser" />
         </many-to-one>
         <many-to-one name="superiorFolder" class="pojo.Folder" fetch="join" lazy="false">

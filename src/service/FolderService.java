@@ -18,4 +18,6 @@ public interface FolderService {
 	public void add(Folder folder);
 	
 	public String getCurrentPath(Folder folder);
+	
+	public List<Folder> getChildren(Folder folder);
 }

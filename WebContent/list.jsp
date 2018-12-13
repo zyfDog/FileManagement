@@ -65,6 +65,14 @@
                     <th class="updatetime">最后更新</th>
                     <th class="operation">操作</th>
                 </tr>
+                <s:iterator value="folderChildren" status="status">
+						<tr>
+							<td><input name="selectFiles" type="checkbox" value="${id}"></td>
+							<td colspan="3">${name}</td>
+							<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> ${updateUser.name}</td>
+							<td>操作</td>
+						</tr>
+				</s:iterator>
 				<s:if test="queryFiles.size != 0">
 					<s:iterator value="queryFiles" status="status">
 						<tr>
@@ -72,7 +80,7 @@
 							<td>${name}</td>
 							<td>${size}</td>
 							<td>${hits}</td>
-							<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm" /></td>
+							<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> ${updateUser.name}</td>
 							<td>操作</td>
 						</tr>
 					</s:iterator>
@@ -84,7 +92,7 @@
 							<td>${name}</td>
 							<td>${size}</td>
 							<td>${hits}</td>
-							<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm" /></td>
+							<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> ${updateUser.name}</td>
 							<td>操作</td>
 						</tr>
 					</s:iterator>

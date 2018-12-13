@@ -21,13 +21,14 @@ public class IndexAction {
 	private FileService fileService;
 	private FolderService folderService;
 	private UserService userService;
-	private List<File> files;//获取所选文件夹中的文件
+	private List<File> files;// 获取所选文件夹中的文件
+	private List<Folder> folderChildren;// 获取所选文件夹中的文件夹
 	private Folder folder;
-	private List<Folder> folders;//获取一级文件夹
-	private List<Folder> allFolders;//获取所有文件夹   用于选择文件或者文件夹的上级文件夹
-	private Map<String, List<User>> userMap;//获取以部门分组的用户Map 用于选择部门和用户
+	private List<Folder> folders;// 获取一级文件夹
+	private List<Folder> allFolders;// 获取所有文件夹 用于选择文件或者文件夹的上级文件夹
+	private Map<String, List<User>> userMap;// 获取以部门分组的用户Map 用于选择部门和用户
 	private List<File> queryFiles = new ArrayList<>();
-	private String currentPath;//获取当前路径
+	private String currentPath;// 获取当前路径
 
 	public FileService getFileService() {
 		return fileService;
@@ -109,6 +110,14 @@ public class IndexAction {
 		this.currentPath = currentPath;
 	}
 
+	public List<Folder> getFolderChildren() {
+		return folderChildren;
+	}
+
+	public void setFolderChildren(List<Folder> folderChildren) {
+		this.folderChildren = folderChildren;
+	}
+
 	public String list() {
 		queryFiles = (List<File>) ActionContext.getContext().get("queryFiles");
 		if (queryFiles != null && queryFiles.size() != 0) {
@@ -116,13 +125,14 @@ public class IndexAction {
 			folder.setId(0);
 			this.folder = folder;
 		}
-		
+
 		files = fileService.list(folder);
 		folders = folderService.list();
 		allFolders = folderService.listAll();
+		folderChildren = folderService.getChildren(folder);
 		currentPath = folderService.getCurrentPath(folder);
 		userMap = userService.getMap();
-		
+
 		return "listJsp";
 	}
 }

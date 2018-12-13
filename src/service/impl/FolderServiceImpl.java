@@ -49,4 +49,10 @@ public class FolderServiceImpl implements FolderService {
 		}
 		return currentPath.toString();
 	}
+	
+	public List<Folder> getChildren(Folder folder) {
+		if(folder.getId() == 0)
+			return null;
+		return folderDAO.getChildren(folder);
+	}
 }

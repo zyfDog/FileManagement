@@ -1,5 +1,6 @@
 package pojo;
 
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -11,6 +12,8 @@ public class Folder {
 	private int id;
 	private String name;
 	private String keyword;
+	private Date updateTime;
+	private User updateUser;
 	private Folder superiorFolder;
 	private Set<Folder> childrenFolder;
 
@@ -38,6 +41,22 @@ public class Folder {
 		this.keyword = keyword;
 	}
 
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+
+	public User getUpdateUser() {
+		return updateUser;
+	}
+
+	public void setUpdateUser(User updateUser) {
+		this.updateUser = updateUser;
+	}
+
 	public Folder getSuperiorFolder() {
 		return superiorFolder;
 	}
@@ -57,7 +76,7 @@ public class Folder {
 	@Override
 	public String toString() {
 
-		return  id + name + keyword + superiorFolder;
+		return id + name + keyword + superiorFolder;
 
 	}
 
