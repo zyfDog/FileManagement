@@ -346,3 +346,7 @@ body{
     padding-top: 5px;
     margin-left: 20px;
 }
+#mainright img{
+	height: 22px;
+	weight: 22px;
+}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,32 +69,46 @@
                 <s:iterator value="folderChildren" status="status">
 						<tr>
 							<td><input name="selectFiles" type="checkbox" value="${id}"></td>
-							<td colspan="3">${name}</td>
-							<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> ${updateUser.name}</td>
-							<td>操作</td>
+							<td colspan="3">&nbsp;<img src="img/folder.png"/>&nbsp;${name}</td>
+							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;属性 &nbsp;&nbsp;重命名</td>
 						</tr>
 				</s:iterator>
 				<s:if test="queryFiles.size != 0">
-					<s:iterator value="queryFiles" status="status">
+					<s:iterator value="queryFiles" var="file" status="status">
 						<tr>
 							<td><input name="selectFiles" type="checkbox" value="${id}"></td>
-							<td>${name}</td>
-							<td>${size}</td>
+							<td>&nbsp;
+								<s:if test="#file.type=='doc'||#file.type=='docx'"><img src="img/doc.png"/></s:if>
+								<s:elseif test="#file.type=='ppt'"><img src="img/ppt.png"/></s:elseif>
+								<s:elseif test="#file.type=='jpg'||#file.type=='JPG'"><img src="img/jpg.png"/></s:elseif>
+								<s:elseif test="#file.type=='txt'"><img src="img/txt.png"/></s:elseif>
+								<s:else><img src="img/png.png"/></s:else>
+								&nbsp;${name}
+							</td>
+							<td><fmt:formatNumber value="${(size/1024)}" pattern="#.0"/>KB</td>
 							<td>${hits}</td>
-							<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> ${updateUser.name}</td>
-							<td>操作</td>
+							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;属性&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
 						</tr>
 					</s:iterator>
 				</s:if>
 				<s:else>
-					<s:iterator value="files" status="status">
+					<s:iterator value="files" var="file" status="status">
 						<tr>
 							<td><input name="selectFiles" type="checkbox" value="${id}"></td>
-							<td>${name}</td>
-							<td>${size}</td>
+							<td>&nbsp;
+								<s:if test="#file.type=='doc'||#file.type=='docx'"><img src="img/doc.png"/></s:if>
+								<s:elseif test="#file.type=='ppt'"><img src="img/ppt.png"/></s:elseif>
+								<s:elseif test="#file.type=='jpg'||#file.type=='JPG'"><img src="img/jpg.png"/></s:elseif>
+								<s:elseif test="#file.type=='txt'"><img src="img/txt.png"/></s:elseif>
+								<s:else><img src="img/png.png"/></s:else>
+								&nbsp;${name}
+							</td>
+							<td><fmt:formatNumber value="${(size/1024)}" pattern="#0.0"/>KB</td>
 							<td>${hits}</td>
-							<td><s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> ${updateUser.name}</td>
-							<td>操作</td>
+							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;属性&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
 						</tr>
 					</s:iterator>
 				</s:else>
@@ -125,9 +140,10 @@
                     	<select name="file.type">
                     		<option value ="doc">doc</option>
                     		<option value ="ppt">ppt</option>
-                    		<option value ="jpg">jpg</option>
+                    		<option value ="JPG">jpg</option>
                     		<option value ="png">png</option>
                     		<option value ="docx">docx</option>
+                    		<option value ="txt">txt</option>
                     	</select>
                     </td>
                 </tr>
