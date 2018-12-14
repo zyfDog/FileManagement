@@ -39,10 +39,11 @@ public class LoginAction extends ActionSupport {
 		if (inUser != null && user.getPassword().equals(inUser.getPassword())) {
 			ActionContext actionContext = ActionContext.getContext();
 			Map<String, Object> session = actionContext.getSession();
-			session.put("user", user);
+			session.put("user", inUser);
 		} else {
 			return "reLogin";
 		}
+		
 		return SUCCESS;
 	}
 

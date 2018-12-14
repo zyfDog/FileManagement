@@ -1,8 +1,13 @@
 package action;
 
+import java.util.Date;
+import java.util.Map;
+
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import pojo.Folder;
+import pojo.User;
 import service.FolderService;
 
 /**
@@ -33,6 +38,9 @@ public class FolderAction extends ActionSupport{
 		if(folder.getSuperiorFolder().getId() == 0) {
 			folder.setSuperiorFolder(null);
 		}
+		folder.setUpdateTime(new Date());
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		folder.setUpdateUser((User) session.get("user"));
 		folderService.add(folder);
 		return SUCCESS;
 	}

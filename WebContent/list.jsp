@@ -69,7 +69,7 @@
                 <s:iterator value="folderChildren" status="status">
 						<tr>
 							<td><input name="selectFiles" type="checkbox" value="${id}"></td>
-							<td colspan="3">&nbsp;<img src="img/folder.png"/>&nbsp;${name}</td>
+							<td colspan="3">&nbsp;&nbsp;<img src="img/folder.png"/>&nbsp;&nbsp;${name}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;属性 &nbsp;&nbsp;重命名</td>
 						</tr>
@@ -86,8 +86,8 @@
 								<s:else><img src="img/png.png"/></s:else>
 								&nbsp;${name}
 							</td>
-							<td><fmt:formatNumber value="${(size/1024)}" pattern="#.0"/>KB</td>
-							<td>${hits}</td>
+							<td align="right"><fmt:formatNumber value="${(size/1024)}" pattern="#.0"/>KB</td>
+							<td align="center">${hits}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;属性&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
 						</tr>
@@ -105,8 +105,8 @@
 								<s:else><img src="img/png.png"/></s:else>
 								&nbsp;${name}
 							</td>
-							<td><fmt:formatNumber value="${(size/1024)}" pattern="#0.0"/>KB</td>
-							<td>${hits}</td>
+							<td align="right"><fmt:formatNumber value="${(size/1024)}" pattern="#0.0"/>KB</td>
+							<td align="center">${hits}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;属性&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
 						</tr>

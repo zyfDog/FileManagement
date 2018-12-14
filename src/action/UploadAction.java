@@ -3,11 +3,14 @@ package action;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import pojo.User;
 import service.FileService;
 
 /**
@@ -79,13 +82,15 @@ public class UploadAction extends ActionSupport {
 
 	public void save(File doc) {
 		file.setName(doc.getName());
-		String type = file.getName().split("\\.")[1];
-		System.out.println(type);
+		String type = file.getName().split("\\.")[1];//.需要转义符\\
 		file.setType(type);
 		file.setSize((int) doc.length());
+		file.setCreateTime(new Date());
 		file.setUpdateTime(new Date());
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		file.setCreateUser((User) session.get("user"));
+		file.setUpdateUser((User) session.get("user"));
 		file.setPath(doc.getPath());
-		System.out.println(file);
 		fileService.add(file);
 	}
 

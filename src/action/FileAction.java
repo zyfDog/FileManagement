@@ -2,12 +2,14 @@ package action;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import pojo.File;
 import pojo.Folder;
+import pojo.User;
 import service.FileService;
 
 /**
@@ -100,9 +102,12 @@ public class FileAction extends ActionSupport {
 	}
 
 	public String add() {
-		file.setName(file.getTheme());
-		file.setName(file.getName() + "." + file.getType());
+		file.setName(file.getTheme() + "." + file.getType());
 		file.setCreateTime(new Date());
+		file.setUpdateTime(new Date());
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		file.setCreateUser((User) session.get("user"));
+		file.setUpdateUser((User) session.get("user"));
 		fileService.add(file);
 		return SUCCESS;
 	}
