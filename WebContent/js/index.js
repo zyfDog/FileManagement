@@ -33,7 +33,31 @@ function deleteFile(){
 			value.push(id[i].value);
 	}
 	if(value.length > 0)
-		window.location='deleteFile?deleteFiles='+value.toString();
+		/*window.location='deleteFile?deleteFiles='+value.toString();*/
+		var deleteFiles='deleteFile?deleteFiles='+value.toString();
+	deleteFolder(deleteFiles);
+}
+function deleteFolder(deleteFiles){
+	var id = document.getElementsByName('selectFolders');
+	var value = new Array();
+	for(var i = 0; i < id.length; i++) {
+		if(id[i].checked)
+			value.push(id[i].value);
+	}
+	if(deleteFiles==null){
+		if(value.length > 0){
+			window.location='deleteFile?deleteFolders='+value.toString();
+		}
+	}	
+	else{
+		if(value.length > 0){
+			deleteFiles += "&deleteFolders="+value.toString();
+			window.location=deleteFiles;
+		}
+		else {
+			window.location=deleteFiles;
+		}
+	}		
 }
 function add(a) {
 	a.submit();
@@ -49,4 +73,17 @@ function downloadFile(){
 		alert("一次只能下载一个文件");
 	if(value.length == 1)
 	   window.location='download?downloadFiles='+value.toString();
+}
+function allSelect(){
+	var all = document.getElementsByClassName("allselects");
+	var allchecked = document.getElementById("allchecked");
+	if(allchecked.checked==true){
+		for(var i=0;i<all.length;i++){
+            all[i].checked=true;
+        }
+    }else{
+        for(var i=0;i<all.length;i++){
+        	all[i].checked=false;
+        }
+    }
 }

@@ -18,6 +18,7 @@
 		<action name="*File" class="fileActionBean" method="{1}">
 			<result type="redirectAction" name="success">index</result>
 			<result type="chain" name="querysuccess">index</result>
+			<result type="chain" name="deletesuccess">deleteFolder</result>
 		</action>
 		<action name="*Folder" class="folderActionBean" method="{1}">
 			<result type="redirectAction" name="success">index</result>

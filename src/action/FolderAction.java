@@ -14,9 +14,10 @@ import service.FolderService;
  * @author: 詹亦凡
  * @date: 2018年12月4日 下午8:53:12
  */
-public class FolderAction extends ActionSupport{
+public class FolderAction extends ActionSupport {
 	private FolderService folderService;
 	private Folder folder;
+	private String deleteFolders;
 
 	public FolderService getFolderService() {
 		return folderService;
@@ -33,15 +34,36 @@ public class FolderAction extends ActionSupport{
 	public void setFolder(Folder folder) {
 		this.folder = folder;
 	}
-	
+
+	public String getDeleteFolders() {
+		return deleteFolders;
+	}
+
+	public void setDeleteFolders(String deleteFolders) {
+		this.deleteFolders = deleteFolders;
+	}
+
 	public String add() {
-		if(folder.getSuperiorFolder().getId() == 0) {
+		if (folder.getSuperiorFolder().getId() == 0) {
 			folder.setSuperiorFolder(null);
 		}
 		folder.setUpdateTime(new Date());
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		folder.setUpdateUser((User) session.get("user"));
 		folderService.add(folder);
+		return SUCCESS;
+	}
+
+	public String delete() {
+		if(deleteFolders == null)
+			return SUCCESS;
+		System.out.println("zzzzzzzz");
+		String[] values = deleteFolders.split(",");
+		for (String value : values) {
+			Folder folder = new Folder();
+			folder.setId(Integer.valueOf(value));
+			folderService.delete(folder);
+		}
 		return SUCCESS;
 	}
 

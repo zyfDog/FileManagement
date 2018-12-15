@@ -55,4 +55,8 @@ public class FolderServiceImpl implements FolderService {
 			return null;
 		return folderDAO.getChildren(folder);
 	}
+	
+	public void delete(Folder folder) {
+		folderDAO.delete(folder);
+	}
 }

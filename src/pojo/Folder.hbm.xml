@@ -29,5 +29,11 @@
             </key>
             <one-to-many class="pojo.Folder" />
         </set>
+        <set name="childrenFile" table="file" inverse="false" cascade="delete" lazy="true">
+            <key>
+                <column name="superior_folder" />
+            </key>
+            <one-to-many class="pojo.File" />
+        </set>
     </class>
 </hibernate-mapping>

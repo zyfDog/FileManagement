@@ -19,5 +19,7 @@ public interface FolderDAO {
 	public Folder get(Integer id);
 	
 	public List<Folder> getChildren(Folder folder);
+	
+	public void delete(Folder folder);
 
 }

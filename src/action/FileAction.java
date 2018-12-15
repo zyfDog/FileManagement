@@ -19,9 +19,10 @@ import service.FileService;
 public class FileAction extends ActionSupport {
 	private FileService fileService;
 	private String deleteFiles;
+	private String deleteFolders;
 	private File file;
 	private Folder folder;
-	private File queryFile;//用于接收查询条件
+	private File queryFile;// 用于接收查询条件
 	private Date beforeQueryDate;
 	private Date afterQueryDate;
 	private List<File> queryFiles;
@@ -40,6 +41,14 @@ public class FileAction extends ActionSupport {
 
 	public void setDeleteFiles(String deleteFiles) {
 		this.deleteFiles = deleteFiles;
+	}
+
+	public String getDeleteFolders() {
+		return deleteFolders;
+	}
+
+	public void setDeleteFolders(String deleteFolders) {
+		this.deleteFolders = deleteFolders;
 	}
 
 	public File getFile() {
@@ -91,14 +100,18 @@ public class FileAction extends ActionSupport {
 	}
 
 	public String delete() {
+		if(deleteFiles == null || deleteFiles == "")
+			return "deletesuccess";
 		String[] values = deleteFiles.split(",");
+		System.out.println(deleteFiles);
+		System.out.println(values);
 		for (String value : values) {
 			File file = new File();
 			file.setId(Integer.valueOf(value));
 			fileService.delete(file);
 		}
 
-		return SUCCESS;
+		return "deletesuccess";
 	}
 
 	public String add() {
@@ -113,8 +126,8 @@ public class FileAction extends ActionSupport {
 	}
 
 	public String query() {
-		queryFiles = fileService.query(queryFile.getName(), queryFile.getTheme(), 
-				queryFile.getKeyword(), queryFile.getCreateUser(), beforeQueryDate, afterQueryDate);
+		queryFiles = fileService.query(queryFile.getName(), queryFile.getTheme(), queryFile.getKeyword(),
+				queryFile.getCreateUser(), beforeQueryDate, afterQueryDate);
 		ActionContext.getContext().put("queryFiles", queryFiles);
 		return "querysuccess";
 	}

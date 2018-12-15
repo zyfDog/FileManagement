@@ -16,6 +16,7 @@ public class Folder {
 	private User updateUser;
 	private Folder superiorFolder;
 	private Set<Folder> childrenFolder;
+	private Set<File> childrenFile;
 
 	public int getId() {
 		return id;
@@ -71,6 +72,14 @@ public class Folder {
 
 	public void setChildrenFolder(Set<Folder> childrenFolder) {
 		this.childrenFolder = childrenFolder;
+	}
+
+	public Set<File> getChildrenFile() {
+		return childrenFile;
+	}
+
+	public void setChildrenFile(Set<File> childrenFile) {
+		this.childrenFile = childrenFile;
 	}
 
 	@Override

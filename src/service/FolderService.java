@@ -20,4 +20,6 @@ public interface FolderService {
 	public String getCurrentPath(Folder folder);
 	
 	public List<Folder> getChildren(Folder folder);
+	
+	public void delete(Folder folder);
 }

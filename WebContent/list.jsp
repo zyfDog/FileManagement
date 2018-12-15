@@ -59,7 +59,7 @@
         <div id="mainright">
             <table>
                 <tr id="tableheader">
-                    <th class="check"><input type="checkbox"></th>
+                    <th class="check"><input id="allchecked" type="checkbox" onclick="allSelect()"></th>
                     <th class="name">名称</th>
                     <th class="size">大小</th>
                     <th class="hits">点击</th>
@@ -68,7 +68,7 @@
                 </tr>
                 <s:iterator value="folderChildren" status="status">
 						<tr>
-							<td><input name="selectFiles" type="checkbox" value="${id}"></td>
+							<td><input class="allselects" name="selectFolders" type="checkbox" value="${id}"></td>
 							<td colspan="3">&nbsp;&nbsp;<img src="img/folder.png"/>&nbsp;&nbsp;${name}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;属性 &nbsp;&nbsp;重命名</td>
@@ -77,7 +77,7 @@
 				<s:if test="queryFiles.size != 0">
 					<s:iterator value="queryFiles" var="file" status="status">
 						<tr>
-							<td><input name="selectFiles" type="checkbox" value="${id}"></td>
+							<td><input class="allselects" name="selectFiles" type="checkbox" value="${id}"></td>
 							<td>&nbsp;
 								<s:if test="#file.type=='doc'||#file.type=='docx'"><img src="img/doc.png"/></s:if>
 								<s:elseif test="#file.type=='ppt'"><img src="img/ppt.png"/></s:elseif>
@@ -96,7 +96,7 @@
 				<s:else>
 					<s:iterator value="files" var="file" status="status">
 						<tr>
-							<td><input name="selectFiles" type="checkbox" value="${id}"></td>
+							<td><input class="allselects" name="selectFiles" type="checkbox" value="${id}"></td>
 							<td>&nbsp;
 								<s:if test="#file.type=='doc'||#file.type=='docx'"><img src="img/doc.png"/></s:if>
 								<s:elseif test="#file.type=='ppt'"><img src="img/ppt.png"/></s:elseif>

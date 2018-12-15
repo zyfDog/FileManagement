@@ -32,4 +32,8 @@ public class FolderDAOImpl extends HibernateTemplate implements FolderDAO {
 	public List<Folder> getChildren(Folder folder) {
 		return find("from Folder where superiorFolder=" + folder.getId());
 	}
+	
+	public void delete(Folder folder) {
+		super.delete(folder);
+	}
 }
