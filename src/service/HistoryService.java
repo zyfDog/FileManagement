@@ -11,4 +11,6 @@ import pojo.History;
 public interface HistoryService {
 	
 	public List<History> list();
+	
+	public void add(History history);
 }

@@ -87,3 +87,6 @@ function allSelect(){
         }
     }
 }
+function filePorperty(file){
+	document.getElementById("fileproperty").style.display = "block";
+}

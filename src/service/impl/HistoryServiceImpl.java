@@ -2,8 +2,6 @@ package service.impl;
 
 import java.util.List;
 
-import org.springframework.orm.hibernate3.HibernateTemplate;
-
 import dao.HistoryDAO;
 import pojo.History;
 import service.HistoryService;
@@ -12,7 +10,7 @@ import service.HistoryService;
  * @author: 詹亦凡
  * @date: 2018年11月27日 下午9:16:55
  */
-public class HistoryServiceImpl extends HibernateTemplate implements HistoryService {
+public class HistoryServiceImpl implements HistoryService {
 
 	HistoryDAO historyDAO;
 
@@ -26,5 +24,9 @@ public class HistoryServiceImpl extends HibernateTemplate implements HistoryServ
 
 	public List<History> list() {
 		return historyDAO.list();
+	}
+	
+	public void add(History history) {
+		historyDAO.add(history);
 	}
 }

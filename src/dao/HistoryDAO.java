@@ -12,4 +12,7 @@ import pojo.History;
 public interface HistoryDAO {
 	
 	public List<History> list();
+	
+	public void add(History history);
+	
 }

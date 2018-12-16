@@ -13,6 +13,16 @@ public class History {
 	private Date time;
 	private String operation;
 
+	public History() {
+		
+	}
+	
+	public History(User user, Date time, String operation) {
+		this.user = user;
+		this.time = time;
+		this.operation = operation;
+	}
+
 	public int getId() {
 		return id;
 	}

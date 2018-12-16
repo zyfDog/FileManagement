@@ -2,15 +2,21 @@ package action;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import pojo.File;
+import pojo.History;
+import pojo.User;
 import service.FileService;
+import service.HistoryService;
 
 public class DownLoadAction extends ActionSupport {
 
@@ -22,6 +28,7 @@ public class DownLoadAction extends ActionSupport {
 	private InputStream inputStream;
 	private String downloadFiles;
 	private FileService fileService;
+	private HistoryService historyService;
 
 	public String getContentType() {
 		return contentType;
@@ -71,6 +78,14 @@ public class DownLoadAction extends ActionSupport {
 		this.inputStream = inputStream;
 	}
 
+	public HistoryService getHistoryService() {
+		return historyService;
+	}
+
+	public void setHistoryService(HistoryService historyService) {
+		this.historyService = historyService;
+	}
+
 	@Override
 	public String execute() throws Exception {
 
@@ -91,6 +106,10 @@ public class DownLoadAction extends ActionSupport {
 		}
 
 		contentLength = inputStream.available();
+		
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		History history = new History((User) session.get("user"), new Date(), "下载");
+		historyService.add(history);
 
 		return SUCCESS;
 	}

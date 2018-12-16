@@ -71,7 +71,7 @@
 							<td><input class="allselects" name="selectFolders" type="checkbox" value="${id}"></td>
 							<td colspan="3">&nbsp;&nbsp;<img src="img/folder.png"/>&nbsp;&nbsp;${name}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;属性 &nbsp;&nbsp;重命名</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span>属性</span> &nbsp;&nbsp;重命名</td>
 						</tr>
 				</s:iterator>
 				<s:if test="queryFiles.size != 0">
@@ -86,10 +86,10 @@
 								<s:else><img src="img/png.png"/></s:else>
 								&nbsp;${name}
 							</td>
-							<td align="right"><fmt:formatNumber value="${(size/1024)}" pattern="#.0"/>KB</td>
+							<td align="right"><fmt:formatNumber value="${(size/1024)}" pattern="#0.0"/>KB</td>
 							<td align="center">${hits}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;属性&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span>属性</span>&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
 						</tr>
 					</s:iterator>
 				</s:if>
@@ -108,7 +108,7 @@
 							<td align="right"><fmt:formatNumber value="${(size/1024)}" pattern="#0.0"/>KB</td>
 							<td align="center">${hits}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;属性&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="filePorperty('<s:property value="#file"/>')">属性</span>&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
 						</tr>
 					</s:iterator>
 				</s:else>
@@ -267,7 +267,6 @@
     <div id="historyo" class="newwindow">
         <div class="newtop">
             <p class="newtitle">历史记录</p>
-            <span>确定</span>
             <span class="close" onclick="newclose(historyo)">关闭</span>
         </div>
         <div id="historytable">
@@ -277,12 +276,23 @@
                     <th id="time">时间</th>
                     <th id="operation">操作</th>
                 </tr>
-                <tr>
-                    <td>管理员</td>
-                    <td>2018-05-17</td>
-                    <td>查看</td>
-                </tr>
-            </table>
+				<s:iterator value="histories" status="status">
+					<tr>
+						<td>${user.name}</td>
+						<td><s:date name="time" format="yyyy-MM-dd HH:mm" /></td>
+						<td>${operation}</td>
+					</tr>
+				</s:iterator>
+			</table>
+        </div>
+    </div>
+    <div id="fileproperty" class="newwindow">
+        <div class="newtop">
+            <p class="newtitle">文件属性</p>
+            <span class="close" onclick="newclose(fileproperty)">关闭</span>
+        </div>
+        <div class="newmain">
+        	
         </div>
     </div>
     <%-- <s:debug></s:debug> --%>

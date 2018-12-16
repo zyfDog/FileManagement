@@ -10,8 +10,10 @@ import org.apache.commons.io.FileUtils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import pojo.History;
 import pojo.User;
 import service.FileService;
+import service.HistoryService;
 
 /**
  * @author: 詹亦凡
@@ -23,6 +25,7 @@ public class UploadAction extends ActionSupport {
 	private String docContentType;
 	private pojo.File file;
 	private FileService fileService;
+	private HistoryService historyService;
 
 	public File getDoc() {
 		return doc;
@@ -64,6 +67,14 @@ public class UploadAction extends ActionSupport {
 		this.fileService = fileService;
 	}
 
+	public HistoryService getHistoryService() {
+		return historyService;
+	}
+
+	public void setHistoryService(HistoryService historyService) {
+		this.historyService = historyService;
+	}
+
 	public String execute() {
 		String realPath = "F:\\eclipse-workspace\\FileManagement\\WebContent\\files";
 		System.out.println("hh" + realPath);
@@ -81,17 +92,21 @@ public class UploadAction extends ActionSupport {
 	}
 
 	public void save(File doc) {
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		
 		file.setName(doc.getName());
-		String type = file.getName().split("\\.")[1];//.需要转义符\\
+		String type = file.getName().split("\\.")[1];// .需要转义符\\
 		file.setType(type);
 		file.setSize((int) doc.length());
 		file.setCreateTime(new Date());
 		file.setUpdateTime(new Date());
-		Map<String, Object> session = ActionContext.getContext().getSession();
 		file.setCreateUser((User) session.get("user"));
 		file.setUpdateUser((User) session.get("user"));
 		file.setPath(doc.getPath());
 		fileService.add(file);
+		
+		History history = new History((User) session.get("user"), new Date(), "上传");
+		historyService.add(history);
 	}
 
 }

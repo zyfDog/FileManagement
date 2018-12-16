@@ -16,4 +16,8 @@ public class HistoryDAOImpl extends HibernateTemplate implements HistoryDAO {
 	public List<History> list() {
 		return find("from History");
 	}
+	
+	public void add(History history) {
+		save(history);
+	}
 }

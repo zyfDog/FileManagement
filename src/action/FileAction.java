@@ -9,8 +9,10 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import pojo.File;
 import pojo.Folder;
+import pojo.History;
 import pojo.User;
 import service.FileService;
+import service.HistoryService;
 
 /**
  * @author: 詹亦凡
@@ -18,6 +20,7 @@ import service.FileService;
  */
 public class FileAction extends ActionSupport {
 	private FileService fileService;
+	private HistoryService historyService;
 	private String deleteFiles;
 	private String deleteFolders;
 	private File file;
@@ -33,6 +36,14 @@ public class FileAction extends ActionSupport {
 
 	public void setFileService(FileService fileService) {
 		this.fileService = fileService;
+	}
+
+	public HistoryService getHistoryService() {
+		return historyService;
+	}
+
+	public void setHistoryService(HistoryService historyService) {
+		this.historyService = historyService;
 	}
 
 	public String getDeleteFiles() {
@@ -100,28 +111,35 @@ public class FileAction extends ActionSupport {
 	}
 
 	public String delete() {
-		if(deleteFiles == null || deleteFiles == "")
+		if (deleteFiles == null || deleteFiles == "")
 			return "deletesuccess";
 		String[] values = deleteFiles.split(",");
-		System.out.println(deleteFiles);
-		System.out.println(values);
 		for (String value : values) {
 			File file = new File();
 			file.setId(Integer.valueOf(value));
 			fileService.delete(file);
 		}
+		
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		History history = new History((User) session.get("user"), new Date(), "删除文件");
+		historyService.add(history);
 
 		return "deletesuccess";
 	}
 
 	public String add() {
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		
 		file.setName(file.getTheme() + "." + file.getType());
 		file.setCreateTime(new Date());
 		file.setUpdateTime(new Date());
-		Map<String, Object> session = ActionContext.getContext().getSession();
 		file.setCreateUser((User) session.get("user"));
 		file.setUpdateUser((User) session.get("user"));
 		fileService.add(file);
+		
+		History history = new History((User) session.get("user"), new Date(), "新增文件");
+		historyService.add(history);
+		
 		return SUCCESS;
 	}
 

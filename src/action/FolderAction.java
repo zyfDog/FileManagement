@@ -7,8 +7,10 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import pojo.Folder;
+import pojo.History;
 import pojo.User;
 import service.FolderService;
+import service.HistoryService;
 
 /**
  * @author: 詹亦凡
@@ -16,6 +18,7 @@ import service.FolderService;
  */
 public class FolderAction extends ActionSupport {
 	private FolderService folderService;
+	private HistoryService historyService;
 	private Folder folder;
 	private String deleteFolders;
 
@@ -25,6 +28,14 @@ public class FolderAction extends ActionSupport {
 
 	public void setFolderService(FolderService folderService) {
 		this.folderService = folderService;
+	}
+
+	public HistoryService getHistoryService() {
+		return historyService;
+	}
+
+	public void setHistoryService(HistoryService historyService) {
+		this.historyService = historyService;
 	}
 
 	public Folder getFolder() {
@@ -49,21 +60,30 @@ public class FolderAction extends ActionSupport {
 		}
 		folder.setUpdateTime(new Date());
 		Map<String, Object> session = ActionContext.getContext().getSession();
+		
 		folder.setUpdateUser((User) session.get("user"));
 		folderService.add(folder);
+		
+		History history = new History((User) session.get("user"), new Date(), "新增文件夹");
+		historyService.add(history);
+		
 		return SUCCESS;
 	}
 
 	public String delete() {
-		if(deleteFolders == null)
+		if (deleteFolders == null)
 			return SUCCESS;
-		System.out.println("zzzzzzzz");
 		String[] values = deleteFolders.split(",");
 		for (String value : values) {
 			Folder folder = new Folder();
 			folder.setId(Integer.valueOf(value));
 			folderService.delete(folder);
 		}
+		
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		History history = new History((User) session.get("user"), new Date(), "删除文件夹");
+		historyService.add(history);
+		
 		return SUCCESS;
 	}
 

@@ -14,18 +14,23 @@
  		<property name="fileService" ref="fileServiceImpl"></property>
  		<property name="folderService" ref="folderServiceImpl"></property>
  		<property name="userService" ref="userServiceImpl"></property>
+ 		<property name="historyService" ref="historyServiceImpl"></property>
  	</bean>
  	<bean name="fileActionBean" class="action.FileAction">
  		<property name="fileService" ref="fileServiceImpl"></property>
+ 		<property name="historyService" ref="historyServiceImpl"></property>
  	</bean>
  	<bean name="folderActionBean" class="action.FolderAction">
  		<property name="folderService" ref="folderServiceImpl"></property>
+ 		<property name="historyService" ref="historyServiceImpl"></property>
  	</bean>
  	<bean name="uploadActionBean" class="action.UploadAction">
  		<property name="fileService" ref="fileServiceImpl"></property>
+ 		<property name="historyService" ref="historyServiceImpl"></property>
  	</bean>
  	<bean name="downloadActionBean" class="action.DownLoadAction">
  		<property name="fileService" ref="fileServiceImpl"></property>
+ 		<property name="historyService" ref="historyServiceImpl"></property>
  	</bean>
  	
  	
@@ -35,6 +40,9 @@
 	<bean name="folderServiceImpl" class="service.impl.FolderServiceImpl">
 		<property name="folderDAO" ref="folderDAOImpl"></property>
 	</bean>
+	<bean name="historyServiceImpl" class="service.impl.HistoryServiceImpl">
+		<property name="historyDAO" ref="historyDAOImpl"></property>
+	</bean>
 	<bean name="userServiceImpl" class="service.impl.UserServiceImpl">
 		<property name="userDAO" ref="userDAOImpl"></property>
 	</bean>
@@ -43,6 +51,9 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="folderDAOImpl" class="dao.impl.FolderDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean name="historyDAOImpl" class="dao.impl.HistoryDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean name="userDAOImpl" class="dao.impl.UserDAOImpl">
