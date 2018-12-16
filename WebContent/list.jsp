@@ -66,12 +66,12 @@
                     <th class="updatetime">最后更新</th>
                     <th class="operation">操作</th>
                 </tr>
-                <s:iterator value="folderChildren" status="status">
+                <s:iterator value="folderChildren" var="folder" status="status">
 						<tr>
 							<td><input class="allselects" name="selectFolders" type="checkbox" value="${id}"></td>
 							<td colspan="3">&nbsp;&nbsp;<img src="img/folder.png"/>&nbsp;&nbsp;${name}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span>属性</span> &nbsp;&nbsp;重命名</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="folderProperty('<s:property value="#folder"/>')">属性</span> &nbsp;&nbsp;重命名</td>
 						</tr>
 				</s:iterator>
 				<s:if test="queryFiles.size != 0">
@@ -295,47 +295,77 @@
         	<table id="filetable">
                 <tr>
                 	<td>name:</td>
-                	<td id="filename"></td>
+                	<td></td>
                 </tr> 
                 <tr>
                 	<td>theme:</td>
-                	<td id="filetheme"></td>
+                	<td></td>
                 </tr>
                 <tr>
                 	<td>type:</td>
-                	<td id="filetype"></td>
+                	<td></td>
                 </tr>
                 <tr>
                 	<td>keyword:</td>
-                	<td id="filekeyword"></td>
+                	<td></td>
                 </tr>
                 <tr>
                 	<td>size:</td>
-                	<td id="filesize"></td>
+                	<td></td>
                 </tr>
                 <tr>
                 	<td>hits:</td>
-                	<td id="filehits"></td>
+                	<td></td>
                 </tr>
                 <tr>
                 	<td>createTime:</td>
-                	<td id="createTime"></td>
+                	<td></td>
                 </tr>
                 <tr>
                 	<td>createUser:</td>
-                	<td id="createUser"></td>
+                	<td></td>
                 </tr>
                 <tr>
                 	<td>updateTime:</td>
-                	<td id="createTime"></td>
+                	<td></td>
                 </tr>
                 <tr>
                 	<td>updateUser:</td>
-                	<td id="updateUser"></td>
+                	<td></td>
                 </tr>
                 <tr>
                 	<td>superiorFolder:</td>
-                	<td id="superiorFolder"></td>
+                	<td></td>
+                </tr>
+			</table>
+        </div>
+    </div>
+    <div id="folderproperty" class="newwindow">
+        <div class="newtop">
+            <p class="newtitle">文件属性</p>
+            <span class="close" onclick="newclose(folderproperty)">关闭</span>
+        </div>
+        <div class="newmain">
+        	<table id="foldertable">
+                <tr>
+                	<td>name:</td>
+                	<td></td>
+                </tr> 
+                <tr>
+                	<td>keyword:</td>
+                	<td></td>
+                </tr>
+                <tr>
+                	<td>updateTime:</td>
+                	<td></td>
+                </tr>
+                <tr>
+                	<td>updateUser:</td>
+                	<td></td>
+                </tr>
+                <tr>
+                	<td>superiorFolder:</td>
+                	<td></td>
                 </tr>
 			</table>
         </div>

@@ -103,3 +103,13 @@ function fileProperty(file){
 	table.rows[9].cells[1].innerHTML=fileObject.updateUser;
 	table.rows[10].cells[1].innerHTML=fileObject.superiorFolder;
 }
+function folderProperty(folder){
+	var folderObject = JSON.parse(folder);
+	var table = document.getElementById("foldertable");
+	document.getElementById("folderproperty").style.display = "block";
+	table.rows[0].cells[1].innerHTML=folderObject.name;
+	table.rows[1].cells[1].innerHTML=folderObject.keyword;
+	table.rows[2].cells[1].innerHTML=folderObject.updateTime;
+	table.rows[3].cells[1].innerHTML=folderObject.updateUser;
+	table.rows[4].cells[1].innerHTML=folderObject.superiorFolder;
+}

@@ -85,7 +85,13 @@ public class Folder {
 	@Override
 	public String toString() {
 
-		return id + name + keyword + superiorFolder;
+		return "{" +
+	            "\"name\":\"" + name +"\","+
+	            "\"keyword\":\"" + keyword + "\","+
+	            "\"updateTime\":\"" + updateTime + "\"," +
+	            "\"updateUser\":\"" + updateUser.getName() + "\"," +
+	            "\"superiorFolder\":\"" + superiorFolder.getName() + "\"" +
+	            '}';
 
 	}
 
