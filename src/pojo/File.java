@@ -2,6 +2,7 @@ package pojo;
 
 import java.util.Date;
 
+
 /**
  * @author: 詹亦凡
  * @date: 2018年11月27日 下午4:31:54
@@ -128,9 +129,20 @@ public class File {
 
 	@Override
 	public String toString() {
-		return "File [id=" + id + ", name=" + name + ", theme=" + theme + ", type=" + type + ", keyword=" + keyword
-				+ ", size=" + size + ", hits=" + hits + ", updateTime=" + updateTime + ", updateUser=" + updateUser
-				+ ", superiorFolder=" + superiorFolder + ", path=" + path + "]";
+		return "{" +
+	            "\"name\":\"" + name +"\","+
+	            "\"theme\":\"" + theme + "\","+
+	            "\"type\":\"" + type + "\"," +
+	            "\"keyword\":\"" + keyword + "\"," +
+	            "\"size\":\"" + size + "\"," +
+	            "\"hits\":\"" + hits + "\"," +
+	            "\"createTime\":\"" + createTime + "\"," +
+	            "\"createUser\":\"" + createUser.getName() + "\"," +
+	            "\"updateTime\":\"" + updateTime + "\"," +
+	            "\"updateUser\":\"" + updateUser.getName() + "\"," +
+	            "\"superiorFolder\":\"" + superiorFolder.getName() + "\"" +
+	            '}';
 	}
+
 
 }

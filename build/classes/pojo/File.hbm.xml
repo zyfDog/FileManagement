@@ -29,7 +29,7 @@
         <property name="createTime" type="java.util.Date">
             <column name="createtime" />
         </property>
-        <many-to-one name="createUser" class="pojo.User" fetch="join">
+        <many-to-one name="createUser" class="pojo.User" fetch="join" lazy="false">
             <column name="createuser" />
         </many-to-one>
         <property name="updateTime" type="java.util.Date">

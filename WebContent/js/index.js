@@ -87,6 +87,19 @@ function allSelect(){
         }
     }
 }
-function filePorperty(file){
+function fileProperty(file){
+	var fileObject = JSON.parse(file);
+	var table = document.getElementById("filetable");
 	document.getElementById("fileproperty").style.display = "block";
+	table.rows[0].cells[1].innerHTML=fileObject.name;
+	table.rows[1].cells[1].innerHTML=fileObject.theme;
+	table.rows[2].cells[1].innerHTML=fileObject.type;
+	table.rows[3].cells[1].innerHTML=fileObject.keyword;
+	table.rows[4].cells[1].innerHTML=fileObject.size;
+	table.rows[5].cells[1].innerHTML=fileObject.hits;
+	table.rows[6].cells[1].innerHTML=fileObject.createTime;
+	table.rows[7].cells[1].innerHTML=fileObject.createUser;
+	table.rows[8].cells[1].innerHTML=fileObject.updateTime;
+	table.rows[9].cells[1].innerHTML=fileObject.updateUser;
+	table.rows[10].cells[1].innerHTML=fileObject.superiorFolder;
 }

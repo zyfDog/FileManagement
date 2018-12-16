@@ -350,3 +350,6 @@ body{
 	height: 22px;
 	weight: 22px;
 }
+#mainright span{
+	cursor:pointer;
+}

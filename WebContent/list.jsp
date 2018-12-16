@@ -89,7 +89,7 @@
 							<td align="right"><fmt:formatNumber value="${(size/1024)}" pattern="#0.0"/>KB</td>
 							<td align="center">${hits}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span>属性</span>&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="fileProperty('<s:property value="#file"/>')">属性</span>&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
 						</tr>
 					</s:iterator>
 				</s:if>
@@ -108,7 +108,7 @@
 							<td align="right"><fmt:formatNumber value="${(size/1024)}" pattern="#0.0"/>KB</td>
 							<td align="center">${hits}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="filePorperty('<s:property value="#file"/>')">属性</span>&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="fileProperty('<s:property value="#file"/>')">属性</span>&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
 						</tr>
 					</s:iterator>
 				</s:else>
@@ -292,7 +292,52 @@
             <span class="close" onclick="newclose(fileproperty)">关闭</span>
         </div>
         <div class="newmain">
-        	
+        	<table id="filetable">
+                <tr>
+                	<td>name:</td>
+                	<td id="filename"></td>
+                </tr> 
+                <tr>
+                	<td>theme:</td>
+                	<td id="filetheme"></td>
+                </tr>
+                <tr>
+                	<td>type:</td>
+                	<td id="filetype"></td>
+                </tr>
+                <tr>
+                	<td>keyword:</td>
+                	<td id="filekeyword"></td>
+                </tr>
+                <tr>
+                	<td>size:</td>
+                	<td id="filesize"></td>
+                </tr>
+                <tr>
+                	<td>hits:</td>
+                	<td id="filehits"></td>
+                </tr>
+                <tr>
+                	<td>createTime:</td>
+                	<td id="createTime"></td>
+                </tr>
+                <tr>
+                	<td>createUser:</td>
+                	<td id="createUser"></td>
+                </tr>
+                <tr>
+                	<td>updateTime:</td>
+                	<td id="createTime"></td>
+                </tr>
+                <tr>
+                	<td>updateUser:</td>
+                	<td id="updateUser"></td>
+                </tr>
+                <tr>
+                	<td>superiorFolder:</td>
+                	<td id="superiorFolder"></td>
+                </tr>
+			</table>
         </div>
     </div>
     <%-- <s:debug></s:debug> --%>
