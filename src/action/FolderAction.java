@@ -88,12 +88,13 @@ public class FolderAction extends ActionSupport {
 	}
 	
 	public String update() {
-		System.out.println("zzz" + folder);
 		Folder oldFolder = folderService.get(folder.getId());
-		System.out.println(oldFolder);
 		oldFolder.setName(folder.getName());
 		folderService.update(oldFolder);
 		
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		History history = new History((User) session.get("user"), new Date(), "重命名文件夹");
+		historyService.add(history);
 		return SUCCESS;
 	}
 

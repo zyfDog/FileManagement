@@ -385,7 +385,7 @@
         	<input id="renamefileid" type="hidden" name="file.id">
         	<table>
         		<tr>
-        			<td>请输入要改成的名称:</td>
+        			<td>重命名名称:</td>
         			<td><input type="text" name="file.name"></td>
         		</tr>
 			</table>
@@ -394,8 +394,8 @@
     </div>
     <div id="renameFolderDiv" class="newwindow">
         <div class="newtop">
-            <p class="newtitle">重命名文件夹</p>
-            <span onclick="add(updateFolder)">确定</span>
+            <p class="newtitle" id="renewtitle">重命名文件夹</p>
+            <span id="resure" onclick="add(updateFolder)">确定</span>
             <span class="close" onclick="newclose(renameFolderDiv)">关闭</span>
         </div>
         <div class="newmain">
@@ -403,7 +403,7 @@
         	<input id="renamefolderid" type="hidden" name="folder.id">
         	<table>
         		<tr>
-        			<td>请输入要改成的名称:</td>
+        			<td>重命名名称:</td>
         			<td><input type="text" name="folder.name"></td>
         		</tr>
 			</table>

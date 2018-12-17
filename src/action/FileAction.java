@@ -148,6 +148,10 @@ public class FileAction extends ActionSupport {
 		queryFiles = fileService.query(queryFile.getName(), queryFile.getTheme(), queryFile.getKeyword(),
 				queryFile.getCreateUser(), beforeQueryDate, afterQueryDate);
 		ActionContext.getContext().put("queryFiles", queryFiles);
+		
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		History history = new History((User) session.get("user"), new Date(), "查询");
+		historyService.add(history);
 		return "querysuccess";
 	}
 	
@@ -156,6 +160,9 @@ public class FileAction extends ActionSupport {
 		oldFile.setName(file.getName() + "." + oldFile.getType());
 		fileService.update(oldFile);
 		
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		History history = new History((User) session.get("user"), new Date(), "重命名文件");
+		historyService.add(history);
 		return SUCCESS;
 	}
 
