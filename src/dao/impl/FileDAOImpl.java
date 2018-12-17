@@ -55,4 +55,8 @@ public class FileDAOImpl extends HibernateTemplate implements FileDAO {
 			hql.append("and createTime between '" + beforeQueryDate + "' and '" + afterQueryDate + "'");
 		return find(hql.toString());
 	}
+	
+	public void update(File file) {
+		super.update(file);
+	}
 }

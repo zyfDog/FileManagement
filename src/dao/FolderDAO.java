@@ -21,5 +21,7 @@ public interface FolderDAO {
 	public List<Folder> getChildren(Folder folder);
 	
 	public void delete(Folder folder);
+	
+	public void update(Folder folder);
 
 }

@@ -21,10 +21,10 @@ import service.HistoryService;
 public class FileAction extends ActionSupport {
 	private FileService fileService;
 	private HistoryService historyService;
-	private String deleteFiles;
-	private String deleteFolders;
+	private String deleteFiles;//需要删除的文件
+	private String deleteFolders;//需要删除的文件夹，传给下一个action用
 	private File file;
-	private Folder folder;
+	private Folder folder;//文件所属文件夹
 	private File queryFile;// 用于接收查询条件
 	private Date beforeQueryDate;
 	private Date afterQueryDate;
@@ -131,6 +131,7 @@ public class FileAction extends ActionSupport {
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		
 		file.setName(file.getTheme() + "." + file.getType());
+		file.setSuperiorFolder(folder);
 		file.setCreateTime(new Date());
 		file.setUpdateTime(new Date());
 		file.setCreateUser((User) session.get("user"));
@@ -148,6 +149,14 @@ public class FileAction extends ActionSupport {
 				queryFile.getCreateUser(), beforeQueryDate, afterQueryDate);
 		ActionContext.getContext().put("queryFiles", queryFiles);
 		return "querysuccess";
+	}
+	
+	public String update() {
+		File oldFile = fileService.get(file.getId());
+		oldFile.setName(file.getName() + "." + oldFile.getType());
+		fileService.update(oldFile);
+		
+		return SUCCESS;
 	}
 
 }

@@ -22,4 +22,8 @@ public interface FolderService {
 	public List<Folder> getChildren(Folder folder);
 	
 	public void delete(Folder folder);
+	
+	public void update(Folder folder);
+	
+	public Folder get(Integer id);
 }

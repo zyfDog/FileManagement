@@ -49,4 +49,8 @@ public class FileServiceImpl implements FileService {
 			Date afterQueryDate) {
 		return fileDAO.query(name, theme, keyword, user, beforeQueryDate, afterQueryDate);
 	}
+	
+	public void update(File file) {
+		fileDAO.update(file);
+	}
 }

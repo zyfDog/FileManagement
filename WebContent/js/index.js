@@ -113,3 +113,15 @@ function folderProperty(folder){
 	table.rows[3].cells[1].innerHTML=folderObject.updateUser;
 	table.rows[4].cells[1].innerHTML=folderObject.superiorFolder;
 }
+function renameFile(file){
+	var fileObject = JSON.parse(file);
+	var fileForm = document.getElementById("updateFile");
+	document.getElementById("renameFileDiv").style.display = "block";
+	document.getElementById("renamefileid").value=fileObject.id;
+}
+function renameFolder(folder){
+	var folderObject = JSON.parse(folder);
+	var folderForm = document.getElementById("updateFolder");
+	document.getElementById("renameFolderDiv").style.display = "block";
+	document.getElementById("renamefolderid").value=folderObject.id;
+}

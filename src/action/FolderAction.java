@@ -86,5 +86,15 @@ public class FolderAction extends ActionSupport {
 		
 		return SUCCESS;
 	}
+	
+	public String update() {
+		System.out.println("zzz" + folder);
+		Folder oldFolder = folderService.get(folder.getId());
+		System.out.println(oldFolder);
+		oldFolder.setName(folder.getName());
+		folderService.update(oldFolder);
+		
+		return SUCCESS;
+	}
 
 }

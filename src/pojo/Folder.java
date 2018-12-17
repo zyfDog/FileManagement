@@ -84,14 +84,28 @@ public class Folder {
 
 	@Override
 	public String toString() {
-
-		return "{" +
+		String Json = "{" +
+				"\"id\":\"" + id +"\","+
+	            "\"name\":\"" + name +"\","+
+	            "\"keyword\":\"" + keyword + "\","+
+	            "\"updateTime\":\"" + updateTime + "\"";
+		
+		if(updateUser != null) {
+			Json += ",\"updateUser\":\"" + updateUser.getName() + "\"";
+		}
+		if(superiorFolder != null) {
+			Json += ",\"superiorFolder\":\"" + superiorFolder.getName() + "\"";
+		}
+		
+		Json += '}';
+		return Json;
+				/*"{" +
 	            "\"name\":\"" + name +"\","+
 	            "\"keyword\":\"" + keyword + "\","+
 	            "\"updateTime\":\"" + updateTime + "\"," +
 	            "\"updateUser\":\"" + updateUser.getName() + "\"," +
 	            "\"superiorFolder\":\"" + superiorFolder.getName() + "\"" +
-	            '}';
+	            '}';*/
 
 	}
 

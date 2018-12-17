@@ -36,4 +36,8 @@ public class FolderDAOImpl extends HibernateTemplate implements FolderDAO {
 	public void delete(Folder folder) {
 		super.delete(folder);
 	}
+	
+	public void update(Folder folder) {
+		super.update(folder);
+	}
 }

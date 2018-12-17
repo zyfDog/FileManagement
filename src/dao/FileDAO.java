@@ -25,4 +25,6 @@ public interface FileDAO {
 	
 	public List<File> query(String name, String theme, String keyword, User user, 
 			Date beforeQueryDate, Date afterQueryDate);
+	
+	public void update(File file);
 }

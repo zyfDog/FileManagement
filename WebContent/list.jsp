@@ -71,7 +71,8 @@
 							<td><input class="allselects" name="selectFolders" type="checkbox" value="${id}"></td>
 							<td colspan="3">&nbsp;&nbsp;<img src="img/folder.png"/>&nbsp;&nbsp;${name}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="folderProperty('<s:property value="#folder"/>')">属性</span> &nbsp;&nbsp;重命名</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="folderProperty('<s:property value="#folder"/>')">属性</span> 
+								&nbsp;&nbsp;<span onclick="renameFolder('<s:property value="#folder"/>')">重命名</span></td>
 						</tr>
 				</s:iterator>
 				<s:if test="queryFiles.size != 0">
@@ -89,7 +90,8 @@
 							<td align="right"><fmt:formatNumber value="${(size/1024)}" pattern="#0.0"/>KB</td>
 							<td align="center">${hits}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="fileProperty('<s:property value="#file"/>')">属性</span>&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="fileProperty('<s:property value="#file"/>')">属性</span>&nbsp;&nbsp; 
+								<span>编辑</span>span>&nbsp;&nbsp; <span onclick="renameFile('<s:property value="#file"/>')">重命名</span>&nbsp;&nbsp; <span>查看</span></td>
 						</tr>
 					</s:iterator>
 				</s:if>
@@ -108,7 +110,8 @@
 							<td align="right"><fmt:formatNumber value="${(size/1024)}" pattern="#0.0"/>KB</td>
 							<td align="center">${hits}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="fileProperty('<s:property value="#file"/>')">属性</span>&nbsp;&nbsp; 编辑&nbsp;&nbsp; 重命名&nbsp;&nbsp; 查看</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="fileProperty('<s:property value="#file"/>')">属性</span>&nbsp;&nbsp; 
+								<span>编辑</span>&nbsp;&nbsp; <span onclick="renameFile('<s:property value="#file"/>')">重命名</span>&nbsp;&nbsp; <span>查看</span></td>
 						</tr>
 					</s:iterator>
 				</s:else>
@@ -154,7 +157,7 @@
                 <tr>
                     <td>所属文件夹</td>
                     <td>
-                    	<select name="file.superiorFolder.id">
+                    	<select name="folder.id">
                     		<s:iterator value="allFolders" var="var" status="status">
                     			<option value = "${id}">${name}</option>
                     		</s:iterator>
@@ -252,7 +255,8 @@
 					<td>关键字</td>
 					<td><input name="queryFile.keyword" id="querytextarea" class="textarea" type="textarea"></td>
 				</tr>
-				<s:doubleselect label="创建者" name="queryFile.createUser.department" list="userMap.keySet()" headerKey="" headerValue="请选择部门"
+				<s:doubleselect label="创建者" name="queryFile.createUser.department" list="userMap.keySet()" 
+					headerKey="" headerValue="请选择部门"
 					doubleName="createUser.name" doubleList="userMap[top]" 
 					doubleListKey="name" doubleListValue="name" >
 				</s:doubleselect>
@@ -342,7 +346,7 @@
     </div>
     <div id="folderproperty" class="newwindow">
         <div class="newtop">
-            <p class="newtitle">文件属性</p>
+            <p class="newtitle">文件夹属性</p>
             <span class="close" onclick="newclose(folderproperty)">关闭</span>
         </div>
         <div class="newmain">
@@ -368,6 +372,42 @@
                 	<td></td>
                 </tr>
 			</table>
+        </div>
+    </div>
+    <div id="renameFileDiv" class="newwindow">
+        <div class="newtop">
+            <p class="newtitle">重命名文件</p>
+            <span onclick="add(updateFile)">确定</span>
+            <span class="close" onclick="newclose(renameFileDiv)">关闭</span>
+        </div>
+        <div class="newmain">
+        	<form id="updateFile" action="updateFile">
+        	<input id="renamefileid" type="hidden" name="file.id">
+        	<table>
+        		<tr>
+        			<td>请输入要改成的名称:</td>
+        			<td><input type="text" name="file.name"></td>
+        		</tr>
+			</table>
+        	</form>
+        </div>
+    </div>
+    <div id="renameFolderDiv" class="newwindow">
+        <div class="newtop">
+            <p class="newtitle">重命名文件夹</p>
+            <span onclick="add(updateFolder)">确定</span>
+            <span class="close" onclick="newclose(renameFolderDiv)">关闭</span>
+        </div>
+        <div class="newmain">
+        	<form id="updateFolder" action="updateFolder">
+        	<input id="renamefolderid" type="hidden" name="folder.id">
+        	<table>
+        		<tr>
+        			<td>请输入要改成的名称:</td>
+        			<td><input type="text" name="folder.name"></td>
+        		</tr>
+			</table>
+        	</form>
         </div>
     </div>
     <%-- <s:debug></s:debug> --%>

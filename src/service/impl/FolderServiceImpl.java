@@ -59,4 +59,12 @@ public class FolderServiceImpl implements FolderService {
 	public void delete(Folder folder) {
 		folderDAO.delete(folder);
 	}
+	
+	public void update(Folder folder) {
+		folderDAO.update(folder);
+	}
+	
+	public Folder get(Integer id) {
+		return folderDAO.get(id);
+	}
 }
