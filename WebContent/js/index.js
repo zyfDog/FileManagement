@@ -64,15 +64,23 @@ function add(a) {
 }
 function downloadFile(){
 	var id = document.getElementsByName('selectFiles');
+	var hits = document.getElementsByClassName('hitsclass');
 	var value = new Array();
+	var j;
 	for(var i = 0; i < id.length; i++) {
-		if(id[i].checked)
+		if(id[i].checked){
 			value.push(id[i].value);
+			j = i;
+			console.log(j);
+		}
 	}
 	if(value.length > 1)
 		alert("一次只能下载一个文件");
-	if(value.length == 1)
+	if(value.length == 1){
 	   window.location='download?downloadFiles='+value.toString();
+	   console.log("zz" + hits[j]);
+	   hits[j].innerHTML = (parseInt(hits[j].innerText) + 1);
+	}
 }
 function allSelect(){
 	var all = document.getElementsByClassName("allselects");

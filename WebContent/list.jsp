@@ -88,10 +88,10 @@
 								&nbsp;${name}
 							</td>
 							<td align="right"><fmt:formatNumber value="${(size/1024)}" pattern="#0.0"/>KB</td>
-							<td align="center">${hits}</td>
+							<td class="hitsclass" align="center">${hits}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="fileProperty('<s:property value="#file"/>')">属性</span>&nbsp;&nbsp; 
-								<span>编辑</span>span>&nbsp;&nbsp; <span onclick="renameFile('<s:property value="#file"/>')">重命名</span>&nbsp;&nbsp; <span>查看</span></td>
+								<span>编辑</span>&nbsp;&nbsp; <span onclick="renameFile('<s:property value="#file"/>')">重命名</span>&nbsp;&nbsp; <span>查看</span></td>
 						</tr>
 					</s:iterator>
 				</s:if>
@@ -108,7 +108,7 @@
 								&nbsp;${name}
 							</td>
 							<td align="right"><fmt:formatNumber value="${(size/1024)}" pattern="#0.0"/>KB</td>
-							<td align="center">${hits}</td>
+							<td align="center" class="hitsclass">${hits}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="fileProperty('<s:property value="#file"/>')">属性</span>&nbsp;&nbsp; 
 								<span>编辑</span>&nbsp;&nbsp; <span onclick="renameFile('<s:property value="#file"/>')">重命名</span>&nbsp;&nbsp; <span>查看</span></td>

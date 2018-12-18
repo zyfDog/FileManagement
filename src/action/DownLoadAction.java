@@ -107,6 +107,9 @@ public class DownLoadAction extends ActionSupport {
 
 		contentLength = inputStream.available();
 		
+		file.setHits(file.getHits() + 1);
+		fileService.update(file);
+		
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		History history = new History((User) session.get("user"), new Date(), "下载");
 		historyService.add(history);
