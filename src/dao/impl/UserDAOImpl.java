@@ -14,7 +14,11 @@ import pojo.User;
 public class UserDAOImpl extends HibernateTemplate implements UserDAO{
 
 	public User get(String account) {
-		return (User) find("from User where account='" + account +"'").get(0);
+		List<User> users = find("from User where account='" + account +"'");
+		if(users == null || users.size() == 0)
+			return null;
+		else 
+			return users.get(0);
 	}
 
 	public List<User> getList() {

@@ -35,7 +35,11 @@ public class LoginAction extends ActionSupport {
 
 	public String execute() {
 
+		System.out.println("zzz");
 		User inUser = userService.get(user.getAccount());
+		if(inUser == null) {
+			return "reLogin";
+		}
 		if (inUser != null && user.getPassword().equals(inUser.getPassword())) {
 			ActionContext actionContext = ActionContext.getContext();
 			Map<String, Object> session = actionContext.getSession();
