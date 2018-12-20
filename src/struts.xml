@@ -20,9 +20,7 @@
 			<interceptor name="loginInterceptor" class="LoginInterceptorBean"></interceptor>
 			<interceptor-stack name="mydefault">
 				<interceptor-ref name="defaultStack"></interceptor-ref>
-				<interceptor-ref name="loginInterceptor">
-					<param name="excludeMethods">login</param>
-				</interceptor-ref>
+				<interceptor-ref name="loginInterceptor"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
 		
