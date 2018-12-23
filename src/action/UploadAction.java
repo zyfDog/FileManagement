@@ -10,6 +10,7 @@ import org.apache.commons.io.FileUtils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import pojo.Folder;
 import pojo.History;
 import pojo.User;
 import service.FileService;
@@ -20,12 +21,21 @@ import service.HistoryService;
  * @date: 2018年12月5日 下午9:23:37
  */
 public class UploadAction extends ActionSupport {
+	private Integer superiorFolderId;
 	private File doc;
 	private String docFileName;
 	private String docContentType;
 	private pojo.File file;
 	private FileService fileService;
 	private HistoryService historyService;
+
+	public Integer getSuperiorFolderId() {
+		return superiorFolderId;
+	}
+
+	public void setSuperiorFolderId(Integer superiorFolderId) {
+		this.superiorFolderId = superiorFolderId;
+	}
 
 	public File getDoc() {
 		return doc;
@@ -77,10 +87,11 @@ public class UploadAction extends ActionSupport {
 
 	public String execute() {
 		String realPath = "F:\\eclipse-workspace\\FileManagement\\WebContent\\files";
-		System.out.println("hh" + realPath);
 		File file = new File(realPath);
 
+		// java.io.File.File(File parent, String child)通过上级路径新建文件
 		File newFile = new File(file, docFileName);
+
 		try {
 			FileUtils.copyFile(doc, newFile);
 		} catch (IOException e) {
@@ -91,9 +102,12 @@ public class UploadAction extends ActionSupport {
 		return SUCCESS;
 	}
 
+	// 将文件存入数据库
 	public void save(File doc) {
 		Map<String, Object> session = ActionContext.getContext().getSession();
-		
+
+		Folder folder = new Folder();
+		folder.setId(superiorFolderId);
 		file.setName(doc.getName());
 		String type = file.getName().split("\\.")[1];// .需要转义符\\
 		file.setType(type);
@@ -103,10 +117,11 @@ public class UploadAction extends ActionSupport {
 		file.setCreateUser((User) session.get("user"));
 		file.setUpdateUser((User) session.get("user"));
 		file.setPath(doc.getPath());
+		file.setSuperiorFolder(folder);
 		fileService.add(file);
-		
+
+		// 添加操作历史
 		History history = new History((User) session.get("user"), new Date(), "上传");
-		historyService.add(history);
 	}
 
 }

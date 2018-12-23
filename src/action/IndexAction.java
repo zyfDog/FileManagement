@@ -139,6 +139,7 @@ public class IndexAction {
 	}
 
 	public String list() {
+		//获取查询文件传来的文件List
 		queryFiles = (List<File>) ActionContext.getContext().get("queryFiles");
 		if (queryFiles != null && queryFiles.size() != 0) {
 			Folder folder = new Folder();

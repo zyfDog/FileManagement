@@ -33,9 +33,9 @@ public class LoginAction extends ActionSupport {
 		this.userService = userService;
 	}
 
+	//登录,并将user放入session
 	public String execute() {
 
-		System.out.println("zzz");
 		User inUser = userService.get(user.getAccount());
 		if(inUser == null) {
 			return "reLogin";

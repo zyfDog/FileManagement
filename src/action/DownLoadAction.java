@@ -5,10 +5,6 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-
-import org.apache.struts2.ServletActionContext;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -22,10 +18,10 @@ public class DownLoadAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 
-	private String contentType;
-	private long contentLength;
-	private String contentDisposition;
-	private InputStream inputStream;
+	private String contentType;  //文件的mime类型，默认为text/plain；
+	private long contentLength; //下载文件的长度
+	private String contentDisposition; //指定文件下载的处理方式，内联(inline)和附件(attachment)两种方式，attachment会弹出文件保存对话框
+	private InputStream inputStream; //inputstream流的名称
 	private String downloadFiles;
 	private FileService fileService;
 	private HistoryService historyService;
@@ -90,11 +86,10 @@ public class DownLoadAction extends ActionSupport {
 	public String execute() throws Exception {
 
 		// 确定各个成员变量的值
-		ServletContext servletContext = ServletActionContext.getServletContext();
-
 		File file = fileService.get(Integer.valueOf(downloadFiles));
 
 		contentDisposition = "attachment;filename=" + file.getName();
+		//如果文件是新建的，没有路径，则新建一个真实文件
 		if (file.getPath() == null) {
 			java.io.File newFile = new java.io.File(
 					"F:\\eclipse-workspace\\FileManagement\\WebContent\\files\\" + file.getName());
@@ -107,9 +102,10 @@ public class DownLoadAction extends ActionSupport {
 
 		contentLength = inputStream.available();
 		
+		//下载后文件点击数加一
 		file.setHits(file.getHits() + 1);
 		fileService.update(file);
-		
+		//添加操作历史
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		History history = new History((User) session.get("user"), new Date(), "下载");
 		historyService.add(history);

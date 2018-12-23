@@ -10,7 +10,9 @@ import pojo.History;
  */
 public interface HistoryService {
 	
+	//获取所有操作历史
 	public List<History> list();
 	
+	//新增操作历史
 	public void add(History history);
 }

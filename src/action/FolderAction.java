@@ -20,7 +20,7 @@ public class FolderAction extends ActionSupport {
 	private FolderService folderService;
 	private HistoryService historyService;
 	private Folder folder;
-	private String deleteFolders;
+	private String deleteFolders;//需要删除的文件夹id字符串
 
 	public FolderService getFolderService() {
 		return folderService;
@@ -53,8 +53,11 @@ public class FolderAction extends ActionSupport {
 	public void setDeleteFolders(String deleteFolders) {
 		this.deleteFolders = deleteFolders;
 	}
-
+	
+	
+	//新增文件夹
 	public String add() {
+		System.out.println(folder.getSuperiorFolder());
 		if (folder.getSuperiorFolder().getId() == 0) {
 			folder.setSuperiorFolder(null);
 		}
@@ -64,12 +67,14 @@ public class FolderAction extends ActionSupport {
 		folder.setUpdateUser((User) session.get("user"));
 		folderService.add(folder);
 		
+		//添加操作历史
 		History history = new History((User) session.get("user"), new Date(), "新增文件夹");
 		historyService.add(history);
 		
 		return SUCCESS;
 	}
 
+	//删除文件夹
 	public String delete() {
 		if (deleteFolders == null)
 			return SUCCESS;
@@ -80,6 +85,7 @@ public class FolderAction extends ActionSupport {
 			folderService.delete(folder);
 		}
 		
+		//添加操作历史
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		History history = new History((User) session.get("user"), new Date(), "删除文件夹");
 		historyService.add(history);
@@ -87,11 +93,13 @@ public class FolderAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	//更新文件夹(重命名)
 	public String update() {
 		Folder oldFolder = folderService.get(folder.getId());
 		oldFolder.setName(folder.getName());
 		folderService.update(oldFolder);
 		
+		//添加操作历史
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		History history = new History((User) session.get("user"), new Date(), "重命名文件夹");
 		historyService.add(history);

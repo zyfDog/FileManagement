@@ -350,7 +350,7 @@ body{
 	height: 22px;
 	weight: 22px;
 }
-#mainright span{
+#mainright span,.onclickname{
 	cursor:pointer;
 }
 #renewtitle{

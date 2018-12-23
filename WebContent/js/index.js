@@ -1,6 +1,7 @@
 window.onload = function() {
 	sidenav();
 }
+//加载左边侧栏
 function sidenav() {
 	var navWrap = document.getElementById("sidenav");
 	var nav1s = navWrap.getElementsByClassName("folders");
@@ -16,15 +17,19 @@ function sidenav() {
 		})(i)
 	}
 }
+//关闭新窗口
 function newclose(a) {
 	a.style.display = "none";
 }
+//打开新窗口
 function newopen(a) {
 	a.style.display = "block";
 }
+//打开文件夹
 function listFile(folderId) {
 	window.location.href="index?folder.id="+folderId;
 }
+//删除文件
 function deleteFile(){
 	var id = document.getElementsByName('selectFiles');
 	var value = new Array();
@@ -37,6 +42,7 @@ function deleteFile(){
 		var deleteFiles='deleteFile?deleteFiles='+value.toString();
 	deleteFolder(deleteFiles);
 }
+//删除文件夹
 function deleteFolder(deleteFiles){
 	var id = document.getElementsByName('selectFolders');
 	var value = new Array();
@@ -59,9 +65,11 @@ function deleteFolder(deleteFiles){
 		}
 	}		
 }
+//新窗口的提交操作
 function add(a) {
 	a.submit();
 }
+//下载文件
 function downloadFile(){
 	var id = document.getElementsByName('selectFiles');
 	var hits = document.getElementsByClassName('hitsclass');
@@ -82,6 +90,7 @@ function downloadFile(){
 	   hits[j].innerHTML = (parseInt(hits[j].innerText) + 1);
 	}
 }
+//全选操作
 function allSelect(){
 	var all = document.getElementsByClassName("allselects");
 	var allchecked = document.getElementById("allchecked");
@@ -95,6 +104,7 @@ function allSelect(){
         }
     }
 }
+//查看文件属性
 function fileProperty(file){
 	var fileObject = JSON.parse(file);
 	var table = document.getElementById("filetable");
@@ -111,6 +121,7 @@ function fileProperty(file){
 	table.rows[9].cells[1].innerHTML=fileObject.updateUser;
 	table.rows[10].cells[1].innerHTML=fileObject.superiorFolder;
 }
+//查看文件夹属性
 function folderProperty(folder){
 	var folderObject = JSON.parse(folder);
 	var table = document.getElementById("foldertable");
@@ -121,12 +132,14 @@ function folderProperty(folder){
 	table.rows[3].cells[1].innerHTML=folderObject.updateUser;
 	table.rows[4].cells[1].innerHTML=folderObject.superiorFolder;
 }
+//重命名文件
 function renameFile(file){
 	var fileObject = JSON.parse(file);
 	var fileForm = document.getElementById("updateFile");
 	document.getElementById("renameFileDiv").style.display = "block";
 	document.getElementById("renamefileid").value=fileObject.id;
 }
+//重命名文件夹
 function renameFolder(folder){
 	var folderObject = JSON.parse(folder);
 	var folderForm = document.getElementById("updateFolder");

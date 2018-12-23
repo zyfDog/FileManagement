@@ -1,5 +1,6 @@
 package dao.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -44,6 +45,7 @@ public class FileDAOImpl extends HibernateTemplate implements FileDAO {
 	
 	public List<File> query(String name, String theme, String keyword, User user, Date beforeQueryDate,
 			Date afterQueryDate) {
+		
 		StringBuilder hql = new StringBuilder("from File where 1=1 ");
 		if(name != null && !name.equals("")) 
 			hql.append("and name like '%" + name + "%'");
@@ -51,8 +53,14 @@ public class FileDAOImpl extends HibernateTemplate implements FileDAO {
 			hql.append("and theme like '%" + theme + "%'");
 		if(keyword != null && !keyword.equals(""))
 			hql.append("and keyword like '%" + keyword + "%'");
-		if(beforeQueryDate != null && afterQueryDate != null) 
-			hql.append("and createTime between '" + beforeQueryDate + "' and '" + afterQueryDate + "'");
+		if(user != null)
+			hql.append("and createUser=" + user.getId());
+		if(beforeQueryDate != null && afterQueryDate != null) {
+			String before = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(beforeQueryDate);
+			String after = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(afterQueryDate);
+			hql.append("and createTime between '" + before + "' and '" + after + "'");
+		}
+			
 		return find(hql.toString());
 	}
 	

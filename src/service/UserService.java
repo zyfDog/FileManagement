@@ -11,10 +11,13 @@ import pojo.User;
  */
 public interface UserService {
 	
+	//通过账号获取用户
 	public User get(String account);
 	
+	//获取所有用户
 	public List<User> getList();
 	
+	//获取用部分分组好的用户List用于Select框
 	public Map<String, List<User>> getMap();
 	
 }

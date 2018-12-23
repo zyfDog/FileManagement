@@ -69,7 +69,7 @@
                 <s:iterator value="folderChildren" var="folder" status="status">
 						<tr>
 							<td><input class="allselects" name="selectFolders" type="checkbox" value="${id}"></td>
-							<td colspan="3">&nbsp;&nbsp;<img src="img/folder.png"/>&nbsp;&nbsp;${name}</td>
+							<td colspan="3" class="onclickname" onclick="listFile(<s:property value="#folder.id"/>)">&nbsp;&nbsp;<img src="img/folder.png"/>&nbsp;&nbsp;${name}</td>
 							<td>&nbsp;&nbsp;<s:date name="updateTime" format="yyyy-MM-dd HH:mm" /> &nbsp;&nbsp;${updateUser.name}</td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;<span onclick="folderProperty('<s:property value="#folder"/>')">属性</span> 
 								&nbsp;&nbsp;<span onclick="renameFolder('<s:property value="#folder"/>')">重命名</span></td>
@@ -79,7 +79,7 @@
 					<s:iterator value="queryFiles" var="file" status="status">
 						<tr>
 							<td><input class="allselects" name="selectFiles" type="checkbox" value="${id}"></td>
-							<td>&nbsp;
+							<td class="onclickname">&nbsp;
 								<s:if test="#file.type=='doc'||#file.type=='docx'"><img src="img/doc.png"/></s:if>
 								<s:elseif test="#file.type=='ppt'"><img src="img/ppt.png"/></s:elseif>
 								<s:elseif test="#file.type=='jpg'||#file.type=='JPG'"><img src="img/jpg.png"/></s:elseif>
@@ -99,7 +99,7 @@
 					<s:iterator value="files" var="file" status="status">
 						<tr>
 							<td><input class="allselects" name="selectFiles" type="checkbox" value="${id}"></td>
-							<td>&nbsp;
+							<td class="onclickname">&nbsp;
 								<s:if test="#file.type=='doc'||#file.type=='docx'"><img src="img/doc.png"/></s:if>
 								<s:elseif test="#file.type=='ppt'"><img src="img/ppt.png"/></s:elseif>
 								<s:elseif test="#file.type=='jpg'||#file.type=='JPG'"><img src="img/jpg.png"/></s:elseif>
@@ -224,7 +224,7 @@
                 <tr>
                     <td>所属文件夹</td>
                     <td>
-						<select name="file.superiorFolder.id">
+						<select name="superiorFolderId">
                     		<s:iterator value="allFolders" var="var" status="status">
                     			<option value = "${id}">${name}</option>
                     		</s:iterator>
@@ -255,10 +255,10 @@
 					<td>关键字</td>
 					<td><input name="queryFile.keyword" id="querytextarea" class="textarea" type="textarea"></td>
 				</tr>
-				<s:doubleselect label="创建者" name="queryFile.createUser.department" list="userMap.keySet()" 
+				<s:doubleselect label="创建者" name="queryFileUser.department" list="userMap.keySet()" 
 					headerKey="" headerValue="请选择部门"
-					doubleName="createUser.name" doubleList="userMap[top]" 
-					doubleListKey="name" doubleListValue="name" >
+					doubleName="queryFileUser.id" doubleList="userMap[top]" 
+					doubleListKey="id" doubleListValue="name" >
 				</s:doubleselect>
 				<tr>
 					<td>创建日期</td>
