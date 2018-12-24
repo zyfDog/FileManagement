@@ -359,3 +359,8 @@ body{
 #resure {
 	margin-left:280px;
 }
+.overflow{
+	height:300px;
+	weight:500px;
+	overflow:auto;
+}

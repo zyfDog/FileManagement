@@ -274,6 +274,7 @@
             <span class="close" onclick="newclose(historyo)">关闭</span>
         </div>
         <div id="historytable">
+        <div class="overflow">
             <table>
                 <tr>
                     <th id="user">用户</th>
@@ -288,6 +289,7 @@
 					</tr>
 				</s:iterator>
 			</table>
+		</div>
         </div>
     </div>
     <div id="fileproperty" class="newwindow">

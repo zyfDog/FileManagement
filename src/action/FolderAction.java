@@ -57,7 +57,6 @@ public class FolderAction extends ActionSupport {
 	
 	//新增文件夹
 	public String add() {
-		System.out.println(folder.getSuperiorFolder());
 		if (folder.getSuperiorFolder().getId() == 0) {
 			folder.setSuperiorFolder(null);
 		}
@@ -68,7 +67,7 @@ public class FolderAction extends ActionSupport {
 		folderService.add(folder);
 		
 		//添加操作历史
-		History history = new History((User) session.get("user"), new Date(), "新增文件夹");
+		History history = new History((User) session.get("user"), new Date(), "新建文件夹");
 		historyService.add(history);
 		
 		return SUCCESS;

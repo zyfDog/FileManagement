@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="action.DownLoadAction" x="54" y="77">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="service.HistoryService"
+            endpointName="historyService" kind="Simple"/>
+        <Association destinationClassName="service.FileService"
+            endpointName="fileService" kind="Simple"/>
+        <Communication destinationClassName="service.FileService"/>
+        <Communication destinationClassName="service.HistoryService"/>
+    </Class>
+    <Class name="dao.impl.HistoryDAOImpl" x="854" y="1040">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="dao.HistoryDAO"/>
+    </Class>
+    <Class name="service.impl.FileServiceImpl" x="146" y="631">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="service.FileService"/>
+        <Association destinationClassName="dao.FileDAO"
+            endpointName="fileDAO" kind="Simple"/>
+        <Communication destinationClassName="dao.FileDAO"/>
+    </Class>
+    <Class name="action.UploadAction" x="1170" y="170">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="service.HistoryService"
+            endpointName="historyService" kind="Simple"/>
+        <Association destinationClassName="service.FileService"
+            endpointName="fileService" kind="Simple"/>
+        <Communication destinationClassName="service.FileService"/>
+    </Class>
+    <Class name="dao.impl.FolderDAOImpl" x="643" y="1028">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="dao.FolderDAO"/>
+    </Class>
+    <Class name="service.impl.UserServiceImpl" x="1030" y="810">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="service.UserService"/>
+        <Association destinationClassName="dao.UserDAO"
+            endpointName="userDAO" kind="Simple"/>
+        <Communication destinationClassName="dao.UserDAO"/>
+    </Class>
+    <Class name="dao.impl.FileDAOImpl" x="158" y="1022">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="dao.FileDAO"/>
+    </Class>
+    <Class name="action.LoginAction" x="1010" y="68">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="service.UserService"
+            endpointName="userService" kind="Simple"/>
+        <Communication destinationClassName="service.UserService"/>
+    </Class>
+    <Class name="dao.FolderDAO" x="639" y="826">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="service.FileService" x="141" y="418">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="dao.UserDAO" x="1055" y="909">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="service.HistoryService" x="959" y="516">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="service.impl.FolderServiceImpl" x="637" y="654">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="service.FolderService"/>
+        <Association destinationClassName="dao.FolderDAO"
+            endpointName="folderDAO" kind="Simple"/>
+        <Communication destinationClassName="dao.FolderDAO"/>
+    </Class>
+    <Class name="dao.FileDAO" x="154" y="813">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="dao.HistoryDAO" x="852" y="882">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="service.UserService" x="1199" y="480">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="action.IndexAction" x="740" y="21">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="service.HistoryService"
+            endpointName="historyService" kind="Simple"/>
+        <Association destinationClassName="service.FileService"
+            endpointName="fileService" kind="Simple"/>
+        <Association destinationClassName="service.FolderService"
+            endpointName="folderService" kind="Simple"/>
+        <Association destinationClassName="service.UserService"
+            endpointName="userService" kind="Simple"/>
+        <Communication destinationClassName="service.FileService"/>
+        <Communication destinationClassName="service.HistoryService"/>
+        <Communication destinationClassName="service.UserService"/>
+        <Communication destinationClassName="service.FolderService"/>
+    </Class>
+    <Class name="service.impl.HistoryServiceImpl" x="844" y="721">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="service.HistoryService"/>
+        <Association destinationClassName="dao.HistoryDAO"
+            endpointName="historyDAO" kind="Simple"/>
+        <Communication destinationClassName="dao.HistoryDAO"/>
+    </Class>
+    <Class name="action.FolderAction" x="548" y="57">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="service.HistoryService"
+            endpointName="historyService" kind="Simple"/>
+        <Association destinationClassName="service.FolderService"
+            endpointName="folderService" kind="Simple"/>
+        <Communication destinationClassName="service.HistoryService"/>
+        <Communication destinationClassName="service.FolderService"/>
+    </Class>
+    <Class name="service.FolderService" x="665" y="456">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="dao.impl.UserDAOImpl" x="1040" y="1048">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="dao.UserDAO"/>
+    </Class>
+    <Class name="action.FileAction" x="310" y="-3">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="service.HistoryService"
+            endpointName="historyService" kind="Simple"/>
+        <Association destinationClassName="service.FileService"
+            endpointName="fileService" kind="Simple"/>
+        <Communication destinationClassName="service.FileService"/>
+        <Communication destinationClassName="service.HistoryService"/>
+    </Class>
+</ClassDiagram>

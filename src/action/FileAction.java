@@ -121,7 +121,7 @@ public class FileAction extends ActionSupport {
 
 	// 删除文件，然后传给删除文件夹的action
 	public String delete() {
-		if (deleteFiles == null || deleteFiles == "")
+		if (deleteFiles == null || deleteFiles.equals(""))
 			return "deletesuccess";
 		String[] values = deleteFiles.split(",");
 		for (String value : values) {
@@ -150,7 +150,7 @@ public class FileAction extends ActionSupport {
 		fileService.add(file);
 
 		// 添加操作历史
-		History history = new History((User) session.get("user"), new Date(), "新增文件");
+		History history = new History((User) session.get("user"), new Date(), "新建文件");
 		historyService.add(history);
 
 		return SUCCESS;
@@ -168,7 +168,7 @@ public class FileAction extends ActionSupport {
 		ActionContext.getContext().put("queryFiles", queryFiles);
 		// 添加操作历史
 		Map<String, Object> session = ActionContext.getContext().getSession();
-		History history = new History((User) session.get("user"), new Date(), "查询");
+		History history = new History((User) session.get("user"), new Date(), "查询文件");
 		historyService.add(history);
 		return "querysuccess";
 	}
