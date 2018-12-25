@@ -94,7 +94,7 @@ public class DownLoadAction extends ActionSupport {
 			// 确定各个成员变量的值
 			File file = fileService.get(Integer.valueOf(downloadFiles));
 
-			contentDisposition = "attachment;filename=" + file.getName();
+			contentDisposition = "attachment;filename=" + java.net.URLEncoder.encode(file.getName(), "UTF-8");
 			//如果文件是新建的，没有路径，则新建一个真实文件
 			if (file.getPath() == null) {
 				java.io.File newFile = new java.io.File(

@@ -21,7 +21,6 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
  */
 /**
  * Zip文件工具类
- * @author Luxh
  */
 public class ZipFileUtil {
      
